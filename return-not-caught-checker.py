@@ -22,17 +22,17 @@ class ReturnNotCaught(BaseChecker):
         self._function_calls_stack = [] # functions called w/o variable assignments
 
     def visit_functiondef(self, node):
-        last = node.body[-1] # I think this is the return statement? last line of a function? is there a better way to find the return statement?
-        if isinstance(last, astroid.Return): # if last thing is a return statement
-            self._function_def_stack.append(node.body.name) # keep track of function name
-            if node.body.name in self._function_calls_stack: # check if function has been called
+        last = node.body[-1]
+        if isinstance(last, astroid.Return):
+            self._function_def_stack.append(node.name)
+            if node.name in self._function_calls_stack:
                 self.add_message(
                     'return-not-caught', node=node,
                 )
 
-    def visit_call(self, node): # so here: not sure if we can figure out if this is assigned? this represents "func()" but could also I think be a child of "foo = func()" :/
-        self._function_calls_stack.append(node.body.func.as_string())# keep track of func name
-        if node.body.func.as_string() in self._function_def_stack: # same as above, check if its in the other list
+    def visit_call(self, node):
+        self._function_calls_stack.append(node.func.as_string())
+        if node.func.as_string() in self._function_def_stack:
                 self.add_message(
                     'return-not-caught', node=node,
                 )
