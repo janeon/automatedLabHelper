@@ -20,19 +20,27 @@ class ReturnNotCaught(BaseChecker):
         super(ReturnNotCaught, self).__init__(linter)
         self._function_def_stack = [] # functions w/ return calls
         self._function_calls_stack = [] # functions called w/o variable assignments
+        self.inAssign = False # checks whether call node is within an assign node
 
     def visit_functiondef(self, node):
-        last = node.body[-1] # I think this is the return statement? last line of a function? is there a better way to find the return statement?
-        if isinstance(last, astroid.Return): # if last thing is a return statement
-            self._function_def_stack.append(node.body.name) # keep track of function name
-            if node.body.name in self._function_calls_stack: # check if function has been called
+        last = node.body[-1] # should be return node if there is one?
+        if isinstance(last, astroid.Return): # if it is
+            self._function_def_stack.append(node.name) # add function name to stack
+            if node.name in self._function_calls_stack: # if function has already been called w/o assignment
                 self.add_message(
                     'return-not-caught', node=node,
                 )
 
-    def visit_call(self, node): # so here: not sure if we can figure out if this is assigned? this represents "func()" but could also I think be a child of "foo = func()" :/
-        self._function_calls_stack.append(node.body.func.as_string())# keep track of func name
-        if node.body.func.as_string() in self._function_def_stack: # same as above, check if its in the other list
+    def visit_assign(self, node): # when we enter an assign node, change flag to reflect that
+        self.inAssign = True
+
+    def leave_assign(self, node): # we have exited an assign node so no longer true
+        self.inAssign = False
+                
+    def visit_call(self, node):
+        if not self.inAssign: # if not in assign node
+            self._function_calls_stack.append(node.func.as_string()) # add name to check if it's defined later
+        if node.func.as_string() in self._function_def_stack and not self.inAssign: # if function returns something but the call is not within an assign node, return error
                 self.add_message(
                     'return-not-caught', node=node,
                 )
