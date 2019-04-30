@@ -1,7 +1,9 @@
 # automatedLabHelper
 
 List of some codes: http://pylint-messages.wikidot.com/all-codes (has been copied to allCodes.txt for cleaning)
+
 List of all codes: https://docs.pylint.org/en/1.6.0/features.html
+
 Code types:
 
 "I": "info",
