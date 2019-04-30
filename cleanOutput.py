@@ -31,32 +31,76 @@ def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
                 for msg in msgs:
                     print('\t',msg)
 
+def printerrors(errorByTypes, report, codeToNames, codeMessagesDict):
+        print(('-'*52)+"ERROR  CHECKS"+('-'*52))
+        for code in errorByTypes:
+            lines = errorByTypes[code]
+            if lines:
+                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" erors \n\t located on lines ", end="")
+                for line in lines:
+                    print(line, end=", ")
+                print("\n")
+                if 'W' in report:
+                    msgs = codeMessagesDict[code]
+                    for msg in msgs:
+                        print('\t',msg)
+
+def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
+        print(('-'*52)+"REFACTOR CHECKS"+('-'*52))
+        for code in refactorByTypes:
+            lines = refactorByTypes[code]
+            if lines:
+                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" erors \n\t located on lines ", end="")
+                for line in lines:
+                    print(line, end=", ")
+                print("\n")
+                if 'W' in report:
+                    msgs = codeMessagesDict[code]
+                    for msg in msgs:
+                        print('\t',msg)
+
 def buildCode_MessagePairs(codes):
     conventions = {}
     warnings = {}
+    errors = {}
+    refactors = {}
     for i in range (0,25):
         codeMessage = codes[i].split(": ")
         conventions[codeMessage[0]] = codeMessage[1]
+
+    for i in range (25,82):
+        codeMessage = codes[i].split(": ")
+        errors[codeMessage[0]] = codeMessage[1]
 
     for i in range (116,184):
         codeMessage = codes[i].split(": ")
         warnings[codeMessage[0]] = codeMessage[1]
 
-    return (conventions, warnings)
+    for i in range (101,115):
+        codeMessage = codes[i].split(": ")
+        refactors[codeMessage[0]] = codeMessage[1]
 
-def buildCode_LineListPairs(conventions, warnings):
+    return (conventions, warnings, errors, refactors)
+
+def buildCode_LineListPairs(conventions, warnings,errors, refactors):
     conventionByTypes = {} # {code : [line numbers]} where code is of type C
     warningByTypes = {} # {code : [line numbers]} where code is of type W
+    errorByTypes = {}
+    refactorByTypes = {}
     for code in conventions:
         conventionByTypes[code] = []
     for code in warnings:
         warningByTypes[code] = []
+    for code in errors:
+        errorByTypes[code] = []
+    for code in refactors:
+        refactorByTypes[code] = []
     # print(conventionByTypes)
     ### end of processing convention messages
     # Test prints conventions dictionary
     # for convention in conventions:
     #     print(convention, conventions[convention])
-    return (conventionByTypes, warningByTypes)
+    return (conventionByTypes, warningByTypes, errorByTypes, refactorByTypes)
 
 def main():
     options = '--enable=all'  # all messages will be shown
@@ -74,13 +118,11 @@ def main():
         warning = output[line].split(": ")
         lineNum = warning[0]
         messages[lineNum[1:]] = warning[1]
-    # print(output)
     codes = list(open("allCodes.txt","r"))
 
-    (conventions, warnings) = buildCode_MessagePairs(codes) # {code:message}
-    (conventionByTypes, warningByTypes) = buildCode_LineListPairs(conventions, warnings)
+    (conventions, warnings, errors, refactors) = buildCode_MessagePairs(codes) # {code:message}
+    (conventionByTypes, warningByTypes, errorByTypes, refactorByTypes) = buildCode_LineListPairs(conventions, warnings,errors, refactors)
 
-    # print(warningByTypes)
     codeToNames = {} # {code : name}
     codeMessagesDict = {} # {code : message}
     for line in messages:
@@ -95,6 +137,10 @@ def main():
             conventionByTypes[code].append(line)
         elif type == "warning":
             warningByTypes[code].append(line)
+        elif type == "error":
+            errorByTypes[code].append(line)
+        elif type == "refactor":
+            refactorByTypes[code].append(line)
 
         if code in codeMessagesDict:
             codeMessagesDict[code].append("L" + line + ": " + warningMessage)
@@ -109,6 +155,8 @@ def main():
             printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
         elif cmd in ['w','W']:
             printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
+        elif cmd in ['e','E']:
+            printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
 
 if __name__ == "__main__":
     main()
