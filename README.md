@@ -13,7 +13,7 @@ Code types:
 
 
 #### POST PROCESSING
-run `<python3 cleanOutput.py [filename] [{i,c,r,w,e,f,I,C,R,W,E,F}>`<sup>\*</sup>`<]>`
+run `python3 cleanOutput.py [filename] [{i,c,r,w,e,f,I,C,R,W,E,F}`<sup>\*</sup>`]`
 
 #Lowercase := shortened lists
 Where ''c','w' lists line numbers where convention/warning messages are found for each type of message (organized by error code) 
