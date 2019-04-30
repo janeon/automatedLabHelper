@@ -13,13 +13,12 @@ Code types:
 "E": "error",
 "F": "fatal"
 
-
 #### POST PROCESSING
-run `python3 cleanOutput.py [filename] [{i,c,r,w,e,f,I,C,R,W,E,F}`<sup>\*</sup>`]`
+run `python3 cleanOutput.py [filename] [{c,r,w,e,f,C,R,W,E,F}`<sup>\*</sup>`]`
 
 #Lowercase := shortened lists
 
-Where ''c','w', 'e' lists line numbers where convention/warning messages are found for each type of message (organized by error code)
+Where ''c','r', 'w','e','f' lists line numbers where convention/warning messages are found for each type of message (organized by error code)
 
 #Uppercase := full lists
 

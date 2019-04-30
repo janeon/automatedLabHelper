@@ -42,6 +42,7 @@ E0213: Method should have "self" as first argument
 E0221: Interface resolved to %s is not a class
 E0222: Missing method %r from %s interface
 E0235: __exit__ must accept 3 arguments: type, value, traceback
+E0401: Unable to import '%s'
 E0501: Non ascii characters found but no encoding specified (PEP 263)
 E0502: Wrong encoding specified (%s)
 E0503: Unknown encoding specified (%s)
