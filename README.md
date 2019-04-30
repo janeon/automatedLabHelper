@@ -1,8 +1,10 @@
 # automatedLabHelper
 
-List of some codes: http://pylint-messages.wikidot.com/all-codes (has been copied to allCodes.txt for cleaning)
+To run the right version of pylint, call the script using the following command:
 
-List of all codes: https://docs.pylint.org/en/1.6.0/features.html
+`source shelltest.sh `
+
+This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (super original I know).
 
 Code types:
 
@@ -12,6 +14,11 @@ Code types:
 "W": "warning",
 "E": "error",
 "F": "fatal"
+
+List of some codes: http://pylint-messages.wikidot.com/all-codes (has been copied to allCodes.txt for cleaning)
+
+List of all codes: https://docs.pylint.org/en/1.6.0/features.html
+
 
 #### POST PROCESSING
 run `python3 cleanOutput.py [filename] [{c,r,w,e,f,C,R,W,E,F}`<sup>\*</sup>`]`
