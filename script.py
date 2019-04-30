@@ -1,8 +1,6 @@
 import sys
 import collections
 
-
-
 flavors = []
 f = open("flavors","r")
 for line in f:
@@ -10,9 +8,6 @@ for line in f:
     for item in list:
         # item =
         flavors.append(item.strip("\t"))
-
-# for item in flavors:
-#     print(item)
 
 o = open("orderings","r")
 preferences = []
