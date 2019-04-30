@@ -6,6 +6,10 @@ To run the right version of pylint, call the script using the following command:
 
 This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (super original I know).
 
+###TODO: 
+- Write gitignore for virtual environment
+- Fix bug in return not caught
+
 Code types:
 
 "I": "info",
