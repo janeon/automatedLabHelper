@@ -12,7 +12,7 @@ Code types:
 "F": "fatal"
 
 
-POST PROCESSING:
+#### POST PROCESSING
 run python3 cleanOutput.py [filename] [{i,c,r,w,e,f,I,C,R,W,E,F}^\*]
 
 where 'c' for example lists line numbers where convention errors are found for each type of C error, and 'W' gives the full list of warnings in addition to the lists of line numbers by error type
