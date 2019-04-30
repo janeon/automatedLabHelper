@@ -4,19 +4,21 @@ from pylint import epylint
 import sys
 
 def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
+    print(('-'*50)+"CONVENTION CHECKS"+('-'*50))
     for code in conventionByTypes:
         lines = conventionByTypes[code]
         if lines:
             print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" convention reminders \n\t located on lines ", end="")
             for line in lines:
-                print(line, end=", ")
+                print('\yt',line, end=", ")
             print("\n")
             if 'C' in report:
                 msgs = codeMessagesDict[code]
                 for msg in msgs:
-                    print(msg)
+                    print('\t',msg)
                     # print(warning)
 def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
+    print(('-'*51)+"WARNING  CHECKS"+('-'*51))
     for code in warningByTypes:
         lines = warningByTypes[code]
         if lines:
@@ -27,7 +29,7 @@ def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
             if 'W' in report:
                 msgs = codeMessagesDict[code]
                 for msg in msgs:
-                    print(msg)
+                    print('\t',msg)
 
 def buildCode_MessagePairs(codes):
     conventions = {}
@@ -78,6 +80,7 @@ def main():
     (conventions, warnings) = buildCode_MessagePairs(codes) # {code:message}
     (conventionByTypes, warningByTypes) = buildCode_LineListPairs(conventions, warnings)
 
+    # print(warningByTypes)
     codeToNames = {} # {code : name}
     codeMessagesDict = {} # {code : message}
     for line in messages:

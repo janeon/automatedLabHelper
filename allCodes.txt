@@ -114,6 +114,7 @@ R0915: Too many statements (%s/%s)
 R0921: Abstract class not referenced
 R0922: Abstract class is only referenced %s times
 R0923: Interface not implemented
+W0001: Returns a non-unique constant.
 W0101: Unreachable code
 W0102: Dangerous default value %s as argument
 W0104: Statement seems to have no effect
