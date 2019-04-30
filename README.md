@@ -27,3 +27,6 @@ Capitalized counterparts give the full list of messages outputted from pylint in
 These lists are organized and ordered by the input CLI parameter: cW gives all shortened convention messages followed by a full list of warnings
 
 Note: To make post-processing work with our checker(s) I had to add the files to the path `miniconda3/pkgs/pylint-2.3.1-py37_0/lib/python3.7/site-packages/pylint/checkers`
+
+Possible database setup if going down the route of a more interactive website https://firebase.google.com/docs/web/setup
+TODO: figure out how to package pylint in environments
