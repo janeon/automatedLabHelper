@@ -1,0 +1,35 @@
+************* Module WEc
+WEc:1:0: F0001: No module named WEc (fatal)
+************* Module testreturnnotcaught
+testreturnnotcaught.py:1:0: C0111: Missing module docstring (missing-docstring)
+testreturnnotcaught.py:2:0: C0111: Missing function docstring (missing-docstring)
+testreturnnotcaught.py:4:0: C0111: Missing function docstring (missing-docstring)
+************* Module cleanOutput
+cleanOutput.py:140:8: W0511: # TODO: Not sure what this does yet, need to test out on more example files (fixme)
+cleanOutput.py:14:0: C0301: Line too long (129/100) (line-too-long)
+cleanOutput.py:28:0: C0301: Line too long (117/100) (line-too-long)
+cleanOutput.py:42:0: C0301: Line too long (118/100) (line-too-long)
+cleanOutput.py:56:0: C0301: Line too long (122/100) (line-too-long)
+cleanOutput.py:70:0: C0301: Line too long (125/100) (line-too-long)
+cleanOutput.py:151:0: C0301: Line too long (105/100) (line-too-long)
+cleanOutput.py:152:0: C0301: Line too long (161/100) (line-too-long)
+cleanOutput.py:1:0: C0103: Module name "cleanOutput" doesn't conform to '(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$' pattern (invalid-name)
+cleanOutput.py:1:0: C0111: Missing module docstring (missing-docstring)
+cleanOutput.py:3:0: W0611: Unused epylint imported from pylint (unused-import)
+cleanOutput.py:4:0: C0411: standard import "import sys" should be placed before "from pylint import epylint" (wrong-import-order)
+testreturnnotcaught.py:1:0: C0111: Missing module docstring (missing-docstring)
+testreturnnotcaught.py:2:0: C0111: Missing function docstring (missing-docstring)
+testreturnnotcaught.py:4:0: C0111: Missing function docstring (missing-docstring)
+testreturnnotcaught.py:1:0: R0801: Similar lines in 2 files
+==testreturnnotcaught:1
+==testreturnnotcaught:1
+def test():
+    return 2
+def main():
+    test()
+
+main() (duplicate-code)
+
+-------------------------------------------------------------------
+Your code has been rated at -4.62/10 (previous run: 2.00/10, -6.62)
+

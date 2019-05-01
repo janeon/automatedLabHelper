@@ -20,4 +20,4 @@ pip install pylint 1> /dev/null
 
 # custom checkers temporarily commented out due to crashing return not caught checker
 cp -R customCheckers/* virtual/lib/python2.7/site-packages/pylint/checkers/
-python cleanOutput.py testreturnnotcaught.py WEc
+python3 cleanOutput.py testreturnnotcaught.py WEc
