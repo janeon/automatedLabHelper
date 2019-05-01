@@ -8,7 +8,7 @@
 # python3 get-pip.py 1> /dev/null
 
 # installing and activating a python virtual env
-python3 -m pip install virtualenv 1> /dev/null
+# python3 -m pip install virtualenv 1> /dev/null
 deactivate 1> /dev/null
 python3 -m virtualenv virtual 1> /dev/null
 source virtual/bin/activate 1> /dev/null
