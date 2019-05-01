@@ -42,6 +42,12 @@ Where ''c','r', 'w','e','f' lists line numbers where convention/warning messages
 
 Capitalized counterparts give the full list of messages outputted from pylint in addition to the lists of line numbers by error type
 
-These lists are organized and ordered by the input CLI parameter: cW gives all shortened convention messages followed by a full list of warnings
+These lists are organized and ordered by the second CLI argument: 
 
-Note: To make post-processing work with our checker(s) I had to add the files to the path `miniconda3/pkgs/pylint-2.3.1-py37_0/lib/python3.7/site-packages/pylint/checkers`
+'cW' gives all shortened convention messages followed by a full list of warnings
+
+Sidenote: To make post-processing work with our checker(s) I added the checker files to the path
+
+`miniconda3/pkgs/pylint-2.3.1-py37_0/lib/python3.7/site-packages/pylint/checkers`
+
+but this should not longer matter with the virutal environment setup
