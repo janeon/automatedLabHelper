@@ -8,14 +8,13 @@ This will not only run pylint, it will also install the latest versions of pip, 
 
 ### TODO:
 - Write gitignore for virtual environment
+- Turns out lab computers do not current have pip3 installed, hence we will need to adapt post processing for the version of pylint for python2
 - Debug in return not caught
 - Possible database setup if going down the route of a more interactive website https://firebase.google.com/docs/web/setup
 
 ### DONE:
 - Written a custom checker
 - Figure out how to package pylint in environments
-
-
 
 Code types:
 
