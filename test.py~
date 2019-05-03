@@ -1,0 +1,17 @@
+import keyword
+
+def func[]:
+    #print("hello"
+    return 5
+
+func()
+
+dog = []
+for i in range(3):
+    print("hi")
+#for = [1,2,3]
+dog[1]
+
+print(keyword.kwlist)
+
+foo = func()
