@@ -1,4 +1,4 @@
-#!/Users/JaneHsieh/Documents/GitHub/ai/automatedLabHelper/virtual/bin/python
+#!/net/storage/zfs/2016/jhsieh/automatedLabHelper/virtual/bin/python
 
 import sys
 import getopt
