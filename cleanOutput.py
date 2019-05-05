@@ -34,20 +34,32 @@ def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
 
 def printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode):
         print(('-'*52)+"ERROR  CHECKS"+('-'*52))
-        for code in errorByTypes:
-            lines = errorByTypes[code]
-            if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" erors \n\t located on line(s) ", end="")
-                match = ""
-                for line in lines:
-                    #print(originalCode[int(line)-1])
-                    match = regexChecks.check(originalCode[int(line)-1])
-                    print(line, end=", ")
-                print("\n")
-                if 'E' in report:
-                    msgs = codeMessagesDict[code]
-                    for msg in msgs:
-                        print('\t',msg,'\t',match)
+        if errorByTypes["E0001"] != []:
+            print("Found 1", "\""+codeToNames["E0001"]+ "\" errors \n\t located on line ", end="")
+            l = errorByTypes["E0001"]
+            print(l[0])
+            print('\t',"Note: While you have a syntax error, output from other code checks won't show up.\n")
+
+            match = regexChecks.check(originalCode[int(l[0])-1])
+            print('\t',codeMessagesDict["E0001"][0],'\t',match)
+        else:
+            for code in errorByTypes:
+                lines = errorByTypes[code]
+                if lines:
+                    print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" errors \n\t located on line(s) ", end="")
+                    match = ""
+                    for line in lines:
+                        ### save in case
+                        #if code == "E0001":
+                            #match = regexChecks.check(originalCode[int(line)-1])
+                        print(line, end=", ")
+                    print("\n")
+                    if 'E' in report:
+                        msgs = codeMessagesDict[code]
+                        for msg in msgs:
+                            ### save in case
+                            #print('\t',msg,'\t',match)
+                            print('\t',msg)
 
 def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
         print(('-'*52)+"REFACTOR CHECKS"+('-'*52))
@@ -186,16 +198,31 @@ def main():
         # print(warningMessage)
     # print(codeMessagesDict)
 
-    for cmd in report:
-        if cmd in ['c', 'C']:
-            printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
-        elif cmd in ['w','W']:
-            printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
-        elif cmd in ['e','E']:
-            printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
-        elif cmd in ['r','R']:
-            printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
-        elif cmd in ['f','F']:
-            printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
+    #for cmd in report:
+    ########## (i changed this b/c if you did "WCRRRRRRR" it would print R like 7 times. also I wanted
+    ##########  to modify it to print syntax errors even if 'E' wasn't selected in report.)
+        # if cmd in ['c', 'C']:
+        #     printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
+        # elif cmd in ['w','W']:
+        #     printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
+        # elif cmd in ['e','E']:
+        #     printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
+        # elif cmd in ['r','R']:
+        #     printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
+        # elif cmd in ['f','F']:
+        #     printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
+
+    # handling input from report:
+    if ('c' in report) or ('C' in report):
+        printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
+    if ('w' in report) or ('W' in report):
+        printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
+    if ('e' in report) or ('E' in report) or (errorByTypes["E0001"] != []):
+        printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
+    if ('r' in report) or ('R' in report):
+        printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
+    if ('f' in report) or ('F' in report):
+        printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
+
 if __name__ == "__main__":
     main()

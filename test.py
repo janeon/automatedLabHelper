@@ -19,9 +19,11 @@ def func():
     o = 15
     p = 16
     return 5
-    
+
 func()
 continue = 3
+#def foo:
+cat = bug + 3
 hi = [1,2,3]
 hi[1]
 yield
