@@ -2,6 +2,7 @@
 
 from pylint import epylint
 import sys
+import regexChecks
 
 def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
     print(('-'*50)+"CONVENTION CHECKS"+('-'*50))
@@ -31,19 +32,22 @@ def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
                 for msg in msgs:
                     print('\t',msg)
 
-def printerrors(errorByTypes, report, codeToNames, codeMessagesDict):
+def printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode):
         print(('-'*52)+"ERROR  CHECKS"+('-'*52))
         for code in errorByTypes:
             lines = errorByTypes[code]
             if lines:
                 print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" erors \n\t located on line(s) ", end="")
+                match = ""
                 for line in lines:
+                    #print(originalCode[int(line)-1])
+                    match = regexChecks.check(originalCode[int(line)-1])
                     print(line, end=", ")
                 print("\n")
-                if 'W' in report:
+                if 'E' in report:
                     msgs = codeMessagesDict[code]
                     for msg in msgs:
-                        print('\t',msg)
+                        print('\t',msg,'\t',match)
 
 def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
         print(('-'*52)+"REFACTOR CHECKS"+('-'*52))
@@ -54,7 +58,7 @@ def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
-                if 'W' in report:
+                if 'R' in report:
                     msgs = codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
@@ -68,7 +72,7 @@ def printfatals(fatalByTypes, report, codeToNames, codeMessagesDict):
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
-                if 'W' in report:
+                if 'F' in report:
                     msgs = codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
@@ -132,6 +136,12 @@ def main():
     options += '--reports=y'  # also print the reports (ascii tables at the end)
     fname = sys.argv[1]
     report = list(sys.argv[2])
+    #### read in fname, save in originalCode to use later
+    codeFile = open(fname,"r")
+    originalCode = list(codeFile)
+    #print(originalCode)
+    codeFile.close()
+
     # ICRWEF
     pylint_stdout, pylint_stderr = epylint.py_run(fname + ' ' + options, return_std=True)
     # TODO: Not sure what this does yet, need to test out on more example files
@@ -139,7 +149,7 @@ def main():
     output = pylint_stdout.getvalue()
     output = output.split(fname)
     messages = {} # {line : message}
-    for line in range (1,len(output)-1):
+    for line in range (1,len(output)):
         warning = output[line].split(": ")
         lineNum = warning[0]
         messages[lineNum[1:]] = warning[1]
@@ -182,7 +192,7 @@ def main():
         elif cmd in ['w','W']:
             printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
         elif cmd in ['e','E']:
-            printerrors(errorByTypes, report, codeToNames, codeMessagesDict)
+            printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
         elif cmd in ['r','R']:
             printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
         elif cmd in ['f','F']:

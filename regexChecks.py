@@ -4,14 +4,17 @@
         1 trying to use a python keyword in assignment
         2 forgetting a ":" at the end of a function call
         3 forgetting "()" at the end of a function call
-        4 forgetting a ":" at the end of a for/while loop
+        4 forgetting a ":" at the end of a for loop
         5 forgetting a ":" at the end of a conditional statement
+
+        others: while loop colon,
 """
 import re
 regex1 = re.compile("(False|None|True|and|as|assert|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|raise|return|try|while|with|yield) = [a-zA-Z0-9-+_\[\]{}(),:]*")
-regex2 = re.compile("def [a-zA-Z_][a-zA-Z0-9_]*:")
-regex3 = re.compile("def [a-zA-Z_][a-zA-Z0-9_]*\(\)")
-regex4 = re.compile("")
+regex2 = re.compile("def [a-zA-Z_][a-zA-Z0-9_]*\(\)$")
+regex3 = re.compile("def [a-zA-Z_][a-zA-Z0-9_]*:")
+#regex4 = regex1
+#regex5 = regex1
 
 def check(line):
     if (regex1.match(line)):
@@ -20,10 +23,10 @@ def check(line):
         return "This error occured because you forgot a colon at the end of your function call."
     elif (regex3.match(line)):
         return "This error occured because you forgot the parentheses after your function name."
-    elif (regex4.match(line)):
-        return "This error occured because you forgot a colon at the end of your loop."
-    elif (regex5.match(line)):
-        return "This error occured because you forgot a colon at the end of your conditional statement."
+    #elif (regex4.match(line)):
+        #return "This error occured because you forgot a colon at the end of your for loop."
+    #elif (regex5.match(line)):
+        #return "This error occured because you forgot a colon at the end of your conditional statement."
     return ""
 
 #def main():
@@ -32,6 +35,7 @@ def check(line):
     #l2 = "def foo:"
     #print("check for ","\"",l2,"\""," is ",check(l2))
     #l3 = "def foo()"
+    #print("check for ","\"",l3,"\""," is ",check(l3))
 
 #main()
 
