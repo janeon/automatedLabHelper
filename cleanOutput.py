@@ -139,7 +139,7 @@ def main():
     output = pylint_stdout.getvalue()
     output = output.split(fname)
     messages = {} # {line : message}
-    for line in range (1,len(output)-1):
+    for line in range (1,len(output)):
         warning = output[line].split(": ")
         lineNum = warning[0]
         messages[lineNum[1:]] = warning[1]
