@@ -21,7 +21,7 @@ def func():
     return 5
 
 func()
-
+continue = 3
 hi = [1,2,3]
 hi[1]
 yield
