@@ -143,7 +143,7 @@ def main():
         warning = output[line].split(": ")
         lineNum = warning[0]
         messages[lineNum[1:]] = warning[1]
-    codes = list(open("allCodes.txt","r"))
+    codes = list(open("errorCodes.txt","r"))
 
     (conventions, warnings, errors, refactors, fatals) = buildCode_MessagePairs(codes) # {code:message}
     (conventionByTypes, warningByTypes, errorByTypes, refactorByTypes, fatalByTypes) = buildCode_LineListPairs(conventions, warnings,errors, refactors, fatals)
@@ -182,6 +182,8 @@ def main():
         elif cmd in ['w','W']:
             printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
         elif cmd in ['e','E']:
+            printerrors(errorByTypes, report, codeToNames, codeMessagesDict)
+        elif cmd in ['r','R']:
             printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
         elif cmd in ['f','F']:
             printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
