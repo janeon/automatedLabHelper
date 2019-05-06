@@ -1,9 +1,17 @@
 # tkinter tutorial https://www.geeksforgeeks.org/python-gui-tkinter/
 from tkinter import *
+from subprocess import *
 import subprocess
-
+import os
 def install():
-    subprocess.check_call(['./installation.sh'])
+    os.system("source installation.sh")
+    # subprocess.check_call(['./installation.sh'])
+    result = check_output(['python3', '--version']).decode("utf-8").split(' ')
+    version = result[1][0:3]
+    # print("cp -R checkers/* virtual/lib/python"+str(version)+"/site-packages/pylint/checkers/")
+    os.system("cp -R checkers/* virtual/lib/python"+str(version)+"/site-packages/pylint/checkers/")
+    # subprocess.check_call(command.split(' '))
+
 
 master = Tk()
 master.title('Automated CS150 Lab Helper')

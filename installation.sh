@@ -12,6 +12,6 @@ pip3 install pylint 1> /dev/null
 # adding and running our custom checkers
 # rsync -r checkers/ virtual/lib/python3.5/site-packages/pylint/checkers/
 # cp -r ./checkers/. ./virtual/lib/python3.5/site-packages/pylint/checkers/
-cp -R checkers/* virtual/lib/python3.5/site-packages/pylint/checkers/
+# cp -R checkers/* virtual/lib/python3.5/site-packages/pylint/checkers/
 # running pylint and postprocessing errors
 # python3 cleanOutput.py testreturnnotcaught.py WEc
