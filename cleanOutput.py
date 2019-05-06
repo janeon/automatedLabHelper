@@ -2,9 +2,9 @@
 
 from pylint import epylint
 import sys
-
+ticks = 45
 def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
-    print(('-'*50)+"CONVENTION CHECKS"+('-'*50))
+    print(('-'*ticks)+"CONVENTION CHECKS"+('-'*ticks))
     for code in conventionByTypes:
         lines = conventionByTypes[code]
         if lines:
@@ -18,7 +18,7 @@ def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
                     print('\t',msg)
                     # print(warning)
 def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
-    print(('-'*51)+"WARNING  CHECKS"+('-'*51))
+    print(('-'*ticks)+"WARNING  CHECKS"+('-'*ticks))
     for code in warningByTypes:
         lines = warningByTypes[code]
         if lines:
@@ -32,7 +32,7 @@ def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
                     print('\t',msg)
 
 def printerrors(errorByTypes, report, codeToNames, codeMessagesDict):
-        print(('-'*52)+"ERROR  CHECKS"+('-'*52))
+        print(('-'*ticks)+"ERROR  CHECKS"+('-'*ticks))
         for code in errorByTypes:
             lines = errorByTypes[code]
             if lines:
@@ -46,7 +46,7 @@ def printerrors(errorByTypes, report, codeToNames, codeMessagesDict):
                         print('\t',msg)
 
 def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
-        print(('-'*52)+"REFACTOR CHECKS"+('-'*52))
+        print(('-'*ticks)+"REFACTOR CHECKS"+('-'*ticks))
         for code in refactorByTypes:
             lines = refactorByTypes[code]
             if lines:
@@ -60,7 +60,7 @@ def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
                         print('\t',msg)
 
 def printfatals(fatalByTypes, report, codeToNames, codeMessagesDict):
-        print(('-'*53)+"FATAL CHECKS"+('-'*53))
+        print(('-'*ticks)+"FATAL CHECKS"+('-'*ticks))
         for code in fatalByTypes:
             lines = fatalByTypes[code]
             if lines:
