@@ -22,6 +22,8 @@ def func():
 
 func()
 continue = 3
+#def foo:
+cat = bug + 3
 hi = [1,2,3]
 hi[1]
 yield

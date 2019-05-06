@@ -2,6 +2,7 @@
 
 from pylint import epylint
 import sys
+import regexChecks
 ticks = 45
 def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
     print(('-'*ticks)+"CONVENTION CHECKS"+('-'*ticks))
@@ -31,19 +32,34 @@ def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
                 for msg in msgs:
                     print('\t',msg)
 
-def printerrors(errorByTypes, report, codeToNames, codeMessagesDict):
+def printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode):
         print(('-'*ticks)+"ERROR  CHECKS"+('-'*ticks))
-        for code in errorByTypes:
-            lines = errorByTypes[code]
-            if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" erors \n\t located on line(s) ", end="")
-                for line in lines:
-                    print(line, end=", ")
-                print("\n")
-                if 'W' in report:
-                    msgs = codeMessagesDict[code]
-                    for msg in msgs:
-                        print('\t',msg)
+        if errorByTypes["E0001"] != []:
+            print("Found 1", "\""+codeToNames["E0001"]+ "\" errors \n\t located on line ", end="")
+            l = errorByTypes["E0001"]
+            print(l[0])
+            print('\t',"Note: While you have a syntax error, output from other code checks won't show up.\n")
+
+            match = regexChecks.check(originalCode[int(l[0])-1])
+            print('\t',codeMessagesDict["E0001"][0],'\t',match)
+        else:
+            for code in errorByTypes:
+                lines = errorByTypes[code]
+                if lines:
+                    print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" errors \n\t located on line(s) ", end="")
+                    match = ""
+                    for line in lines:
+                        ### save in case
+                        #if code == "E0001":
+                            #match = regexChecks.check(originalCode[int(line)-1])
+                        print(line, end=", ")
+                    print("\n")
+                    if 'E' in report:
+                        msgs = codeMessagesDict[code]
+                        for msg in msgs:
+                            ### save in case
+                            #print('\t',msg,'\t',match)
+                            print('\t',msg)
 
 def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
         print(('-'*ticks)+"REFACTOR CHECKS"+('-'*ticks))
@@ -54,7 +70,7 @@ def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
-                if 'W' in report:
+                if 'R' in report:
                     msgs = codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
@@ -68,7 +84,7 @@ def printfatals(fatalByTypes, report, codeToNames, codeMessagesDict):
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
-                if 'W' in report:
+                if 'F' in report:
                     msgs = codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
@@ -132,6 +148,12 @@ def main():
     options += '--reports=y'  # also print the reports (ascii tables at the end)
     fname = sys.argv[1]
     report = list(sys.argv[2])
+    #### read in fname, save in originalCode to use later
+    codeFile = open(fname,"r")
+    originalCode = list(codeFile)
+    #print(originalCode)
+    codeFile.close()
+
     # ICRWEF
     pylint_stdout, pylint_stderr = epylint.py_run(fname + ' ' + options, return_std=True)
     # TODO: Not sure what this does yet, need to test out on more example files
@@ -176,16 +198,31 @@ def main():
         # print(warningMessage)
     # print(codeMessagesDict)
 
-    for cmd in report:
-        if cmd in ['c', 'C']:
-            printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
-        elif cmd in ['w','W']:
-            printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
-        elif cmd in ['e','E']:
-            printerrors(errorByTypes, report, codeToNames, codeMessagesDict)
-        elif cmd in ['r','R']:
-            printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
-        elif cmd in ['f','F']:
-            printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
+    #for cmd in report:
+    ########## (i changed this b/c if you did "WCRRRRRRR" it would print R like 7 times. also I wanted
+    ##########  to modify it to print syntax errors even if 'E' wasn't selected in report.)
+        # if cmd in ['c', 'C']:
+        #     printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
+        # elif cmd in ['w','W']:
+        #     printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
+        # elif cmd in ['e','E']:
+        #     printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
+        # elif cmd in ['r','R']:
+        #     printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
+        # elif cmd in ['f','F']:
+        #     printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
+
+    # handling input from report:
+    if ('c' in report) or ('C' in report):
+        printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
+    if ('w' in report) or ('W' in report):
+        printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
+    if ('e' in report) or ('E' in report) or (errorByTypes["E0001"] != []):
+        printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
+    if ('r' in report) or ('R' in report):
+        printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
+    if ('f' in report) or ('F' in report):
+        printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
+
 if __name__ == "__main__":
     main()
