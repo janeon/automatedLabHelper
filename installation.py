@@ -1,9 +1,19 @@
+#import os
+
+
+#os.system("virtualenv -p python3 virtual 1> /dev/null")
+#os.system("source activate;python -V")
+#os.system("/bin/bash  --rcfile virtual/bin/activate 1> /dev/null")
+ 
+
+
+
 #!/bin/bash
 
 # install & activate python3 virtual environment called "virtual"
 #python3 -m virtualenv virtual 1> /dev/null
-virtualenv -p python3 virtual
-. virtual/bin/activate
+#virtualenv -p python3 virtual
+#. virtual/bin/activate
 # https://askubuntu.com/questions/1131539/make-virtualenv-and-activate-it-with-shell-script
 # https://stackoverflow.com/questions/14967032/error-when-installing-python-settuptools-no-such-file-or-directory-usr-loca
 

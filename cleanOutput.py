@@ -5,7 +5,8 @@ import sys
 import regexChecks
 ticks = 45
 def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
-    print(('-'*ticks)+"CONVENTION CHECKS"+('-'*ticks))
+    print()
+    print((' '*ticks)+"CONVENTION CHECKS"+(' '*ticks))
     for code in conventionByTypes:
         lines = conventionByTypes[code]
         if lines:
@@ -19,7 +20,8 @@ def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
                     print('\t',msg)
                     # print(warning)
 def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
-    print(('-'*ticks)+"WARNING  CHECKS"+('-'*ticks))
+    print()
+    print((' '*ticks)+"WARNING  CHECKS"+(' '*ticks))
     for code in warningByTypes:
         lines = warningByTypes[code]
         if lines:
@@ -33,61 +35,64 @@ def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
                     print('\t',msg)
 
 def printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode):
-        print(('-'*ticks)+"ERROR  CHECKS"+('-'*ticks))
-        if errorByTypes["E0001"] != []:
-            print("Found 1", "\""+codeToNames["E0001"]+ "\" errors \n\t located on line ", end="")
-            l = errorByTypes["E0001"]
-            print(l[0])
-            print('\t',"Note: While you have a syntax error, output from other code checks won't show up.\n")
+    print()
+    print((' '*ticks)+"ERROR  CHECKS"+(' '*ticks))
+    if errorByTypes["E0001"] != []:
+        print("Found 1", "\""+codeToNames["E0001"]+ "\" errors \n\t located on line ", end="")
+        l = errorByTypes["E0001"]
+        print(l[0])
+        print('\t',"Note: While you have a syntax error, output from other code checks won't show up.\n")
 
-            match = regexChecks.check(originalCode[int(l[0])-1])
-            print('\t',codeMessagesDict["E0001"][0],'\t',match)
-        else:
-            for code in errorByTypes:
-                lines = errorByTypes[code]
-                if lines:
-                    print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" errors \n\t located on line(s) ", end="")
-                    match = ""
-                    for line in lines:
+        match = regexChecks.check(originalCode[int(l[0])-1])
+        print('\t',codeMessagesDict["E0001"][0],'\t',match)
+    else:
+        for code in errorByTypes:
+            lines = errorByTypes[code]
+            if lines:
+                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" errors \n\t located on line(s) ", end="")
+                match = ""
+                for line in lines:
+                    ### save in case
+                    #if code == "E0001":
+                        #match = regexChecks.check(originalCode[int(line)-1])
+                    print(line, end=", ")
+                print("\n")
+                if 'E' in report:
+                    msgs = codeMessagesDict[code]
+                    for msg in msgs:
                         ### save in case
-                        #if code == "E0001":
-                            #match = regexChecks.check(originalCode[int(line)-1])
-                        print(line, end=", ")
-                    print("\n")
-                    if 'E' in report:
-                        msgs = codeMessagesDict[code]
-                        for msg in msgs:
-                            ### save in case
-                            #print('\t',msg,'\t',match)
-                            print('\t',msg)
+                        #print('\t',msg,'\t',match)
+                        print('\t',msg)
 
 def printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict):
-        print(('-'*ticks)+"REFACTOR CHECKS"+('-'*ticks))
-        for code in refactorByTypes:
-            lines = refactorByTypes[code]
-            if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" refactors \n\t located on line(s) ", end="")
-                for line in lines:
-                    print(line, end=", ")
-                print("\n")
-                if 'R' in report:
-                    msgs = codeMessagesDict[code]
-                    for msg in msgs:
-                        print('\t',msg)
+    print()
+    print((' '*ticks)+"REFACTOR CHECKS"+(' '*ticks))
+    for code in refactorByTypes:
+        lines = refactorByTypes[code]
+        if lines:
+            print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" refactors \n\t located on line(s) ", end="")
+            for line in lines:
+                print(line, end=", ")
+            print("\n")
+            if 'R' in report:
+                msgs = codeMessagesDict[code]
+                for msg in msgs:
+                    print('\t',msg)
 
 def printfatals(fatalByTypes, report, codeToNames, codeMessagesDict):
-        print(('-'*ticks)+"FATAL CHECKS"+('-'*ticks))
-        for code in fatalByTypes:
-            lines = fatalByTypes[code]
-            if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" fatal checks \n\t located on line(s) ", end="")
-                for line in lines:
-                    print(line, end=", ")
-                print("\n")
-                if 'F' in report:
-                    msgs = codeMessagesDict[code]
-                    for msg in msgs:
-                        print('\t',msg)
+    print()
+    print((' '*ticks)+"FATAL CHECKS"+(' '*ticks))
+    for code in fatalByTypes:
+        lines = fatalByTypes[code]
+        if lines:
+            print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" fatal checks \n\t located on line(s) ", end="")
+            for line in lines:
+                print(line, end=", ")
+            print("\n")
+            if 'F' in report:
+                msgs = codeMessagesDict[code]
+                for msg in msgs:
+                    print('\t',msg)
 
 def buildCode_MessagePairs(codes):
     conventions = {}
