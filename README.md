@@ -1,16 +1,16 @@
 # automatedLabHelper
 
-To run the right version of pylint, call the script using the following command:
-
-`source installation.sh `
+The lab helper now has an interface!
+run with `python3 interface.py`
 
 This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (super original I know).
 
 ### TODO:
-- Write gitignore for virtual environment
-- Possible database setup if going down the route of a more interactive website https://firebase.google.com/docs/web/setup
+- Make it possible to run cleanoutput on interface
+- Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos / articles / documentation.
 
 ### DONE:
+- Basic interface for making installing and file browsing easier 
 - Written a custom checker
 - Figure out how to package pylint in environments
 
@@ -42,9 +42,3 @@ Capitalized counterparts give the full list of messages outputted from pylint in
 These lists are organized and ordered by the second CLI argument:
 
 'cW' gives all shortened convention messages followed by a full list of warnings
-
-Sidenote: To make post-processing work with our checker(s) I added the checker files to the path
-
-`miniconda3/pkgs/pylint-2.3.1-py37_0/lib/python3.7/site-packages/pylint/checkers`
-
-but this should not longer matter with the virutal environment setup
