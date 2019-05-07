@@ -13,12 +13,12 @@
         others we could implement: stuff for incorrect bracket types???
 """
 import re
-regex1 = re.compile("^(False|None|True|and|as|assert|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|raise|return|try|while|with|yield) = [a-zA-Z0-9-+_\[\]{}(),:]*")
+regex1 = re.compile("^[ ]*(False|None|True|and|as|assert|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|raise|return|try|while|with|yield) = [a-zA-Z0-9-+_\[\]{}(),:]*")
 regex2 = re.compile("^def [a-zA-Z_][a-zA-Z0-9_]*\(\)$")
 regex3 = re.compile("^def [a-zA-Z_][a-zA-Z0-9_]*:")
-regex4 = re.compile("^for .* in [^:\n]*$")
-regex5 = re.compile("^(if |elif |else)[^:\n]*$")
-regex6 = re.compile("^while [^:\n]*$")
+regex4 = re.compile("^[ ]*for .* in [^:\n]*$")
+regex5 = re.compile("^[ ]*(if |elif |else)[^:\n]*$")
+regex6 = re.compile("^[ ]*while [^:\n]*$")
 #regex7 = re.compile("^[a-zA-Z_][a-zA-Z0-9_]* = [a-zA-Z_][a-zA-Z0-9_]*\(.*\)$")
 
 def check(line):

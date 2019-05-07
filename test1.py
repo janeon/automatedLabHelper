@@ -1,8 +1,8 @@
-def test():
-    return 2
-
 def main():
-    test()
+    lambda = 5
+    print(lambda)
 
 if __name__ == '__main__':
     main()
+
+
