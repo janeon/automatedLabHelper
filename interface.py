@@ -19,9 +19,8 @@ def install():
 def openfile():
    filename = askopenfilename(parent=master)
    f = open(filename)
-   print(filename)
-   return f.read()
-
+   return f
+   
 def load_file():
     fname = askopenfilename(filetypes=[("Python files","*.py")])
     print(fname)
