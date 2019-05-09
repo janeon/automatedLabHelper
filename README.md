@@ -2,6 +2,9 @@
 Jane Hsieh, Emily Hamlin, Adina Johnson
 
 ## Overview of our project
+Novice programmers often encounter similar issues in programming. Students in an introductory computer science course such as CSCI 150 offered here at Oberlin are no exception. Even though the class has been carefully designed to provide students with a multitude of resources (such as instructors, student lab helpers, and office hours), a portion of the class may still be intimidated or embarrassed to ask for guidance. Two of our team members have experience in lab helping CSCI 150 and have noticed that students often run into similar errors on their programming assignments. This provides us with an opportunity to detect common errors from past student homework solutions and utilize knowledge from student responses in README reports as well as our own lab-helping experience to compile a list of suggested solutions for the more commonly occurring problems. The “intelligent” component of our program will be able to form answers to newer bugs and questions that have not been experienced in the past.
+
+Our project is an automated lab helper designed to help CSCI 150 students find bugs in their code and develop a better understanding of common errors and how to fix them.
 
 ## Files
 ### cleanOutput.py
@@ -42,12 +45,16 @@ if __name__ == '__main__':
 but would not return an error if `test()` was replaced with `retVal = test()`. It doesn't work in all cases yet (for instance, it would return an error for something like `print(test())`).
 
 ### interface.py
+Our lab helper program can be run from the command line using `cleanOutput.py` (explained above), or using a Tkinter interface. The interface can be run using
 
-The lab helper now has an interface!
-run with `python3 interface.py`
+```bash
+python3 interface.py
+```
 
 This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (super original I know).
 
+### install.py??
+### installation.py??? Which of theses are still needed? Which can be removed?
 
 ### more stuff from earlier versions of the readme:
 
