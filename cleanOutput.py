@@ -1,5 +1,6 @@
-# post-processes syntactical errors into more readable, less redundant / terrifying messages
-
+""" cleanOutput.py
+    post-processes pylint warnings and errors into more readable, less redundant/terrifying messages
+"""
 from pylint import epylint
 import sys
 import regexChecks
@@ -19,6 +20,7 @@ def printConventions(conventionByTypes, report, codeToNames, codeMessagesDict):
                 for msg in msgs:
                     print('\t',msg)
                     # print(warning)
+
 def printwarnings(warningByTypes, report, codeToNames, codeMessagesDict):
     print()
     print((' '*ticks)+"WARNING  CHECKS"+(' '*ticks))
@@ -220,12 +222,13 @@ def main():
     # handling input from report:
     if ('c' in report) or ('C' in report):
         printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
+    if ('r' in report) or ('R' in report):
+        printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
     if ('w' in report) or ('W' in report):
         printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
     if ('e' in report) or ('E' in report) or (errorByTypes["E0001"] != []):
         printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
-    if ('r' in report) or ('R' in report):
-        printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
+
     if ('f' in report) or ('F' in report):
         printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
 

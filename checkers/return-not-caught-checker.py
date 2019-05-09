@@ -1,3 +1,6 @@
+""" return-not-caught-checker.py
+    A checker for when a function is called, but its return value is not saved.
+"""
 import astroid
 
 from pylint.checkers import BaseChecker
@@ -15,7 +18,7 @@ class ReturnNotCaught(BaseChecker):
             'A function returns something but when the function is called, the return value is not saved.'
         ),
     }
-    
+
     def __init__(self, linter=None):
         super(ReturnNotCaught, self).__init__(linter)
         self._function_def_stack = [] # functions w/ return calls
@@ -36,7 +39,7 @@ class ReturnNotCaught(BaseChecker):
 
     def leave_assign(self, node): # we have exited an assign node so no longer true
         self.inAssign = False
-                
+
     def visit_call(self, node):
         if not self.inAssign: # if not in assign node
             self._function_calls_stack.append(node.func.as_string()) # add name to check if it's defined later
