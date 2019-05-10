@@ -8,7 +8,7 @@ Our project is an automated lab helper designed to help CSCI 150 students find b
 
 ## Files
 ### cleanOutput.py
-`cleanOutput.py` post-processes pylint output into more readable, less redundant output. Users can run `cleanOutput.py` through the command line using the command
+`cleanOutput.py` post-processes pylint output into more readable, less redundant output. Users who desired to see their output straight from the command line rather than through the tkinter interface can run `cleanOutput.py` through the command line using the command
 
 ```bash
 python3 cleanOutput.py [filename] [{c,r,w,e,f,C,R,W,E,F}`<sup>\*</sup>`]
