@@ -59,19 +59,19 @@ if __name__ == '__main__':
 
 but would not return an error if `test()` was replaced with `retVal = test()`. It doesn't work in all cases yet (for instance, it would return an error for something like `print(test())`).
 
-### more stuff from earlier versions of the readme:
+## Progress
 
 ### TODO:
-- Run our program on example files from 150 to determine utility of each error based on frequency of occurence in past student code
-- Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos / articles / documentation.
+* Run our program on example files from 150 to determine utility of each error based on frequency of occurence in past student code
+* Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos/articles/documentation.
 
 ### DONE:
-- Basic interface for making installing and file browsing easier
-- Make it possible to run cleanoutput on interface
-- Written a custom checker
-- Figure out how to package pylint in environments
+* Basic interface for making installing and file browsing easier
+* Make it possible to run cleanoutput on interface
+* Written a custom checker
+* Figure out how to package pylint in environments
 
-### Other miscellany
+## Miscellaneous
 
 List of some codes: http://pylint-messages.wikidot.com/all-codes (has been copied to allCodes.txt for cleaning)
 
