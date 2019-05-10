@@ -62,6 +62,7 @@ but would not return an error if `test()` was replaced with `retVal = test()`. I
 ### more stuff from earlier versions of the readme:
 
 ### TODO:
+- Run our program on example files from 150 to determine utility of each error based on frequency of occurence in past student code
 - Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos / articles / documentation.
 
 ### DONE:
