@@ -7,6 +7,21 @@ Novice programmers often encounter similar issues in programming. Students in an
 Our project is an automated lab helper designed to help CSCI 150 students find bugs in their code and develop a better understanding of common errors and how to fix them.
 
 ## Files
+
+### interface.py
+Our lab helper program can be run from the command line using `cleanOutput.py` (explained below), or using a Tkinter interface. The interface can be installed and run with
+
+``` 
+python3 install.py
+```
+which opens up a launcher window for the virtual environment, followed by
+```
+python3 interface.py
+```
+
+This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (which will appear in parentheses on the left of each CLI line).
+
+
 ### cleanOutput.py
 `cleanOutput.py` post-processes pylint output into more readable, less redundant output. Users who desired to see their output straight from the command line rather than through the tkinter interface can run `cleanOutput.py` through the command line using the command
 
@@ -44,19 +59,6 @@ if __name__ == '__main__':
 
 but would not return an error if `test()` was replaced with `retVal = test()`. It doesn't work in all cases yet (for instance, it would return an error for something like `print(test())`).
 
-### interface.py
-Our lab helper program can be run from the command line using `cleanOutput.py` (explained above), or using a Tkinter interface. The interface can be run by first running
-
-``` python3 install.py
-```
-which opens up a launcher window for the virtual environment, followed by
-```
-python3 interface.py
-```
-
-This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (super original I know).
-
-### install.py?? 
 ### installation.py??? Which of theses are still needed? Which can be removed?
 likely that this one can be removed, could we test it on a lab machine sometime today? It'll take a second
 
