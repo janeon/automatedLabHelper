@@ -16,7 +16,7 @@ def main():
         call = "python3 cleanOutput.py "+fileName+" CWERF"
         result = check_output(call.split(" ")).decode("utf-8")
         #print(result)
-
+        
 
 # what is the goal of this? to look through and see how many types of errors are found? Add them to some sort of dict?
 

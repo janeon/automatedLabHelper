@@ -7,7 +7,7 @@ import regexChecks
 ticks = 45
 
 class cleanOutput:
-    def __init__(self, fname, report, originalCode):
+    def __init__(self, fname, report, originalCode, options):
         self.conventions = {}
         self.warnings = {}
         self.errors = {}
@@ -21,6 +21,7 @@ class cleanOutput:
         self.fname = fname
         self.report = report
         self.originalCode = originalCode
+        self.options = options
 
     def printconventions(self, codeToNames, codeMessagesDict):
         print()
@@ -136,7 +137,7 @@ class cleanOutput:
             self.warnings[codeMessage[0]] = codeMessage[1]
 
 
-    def buildCode_LineListPairs():
+    def buildCode_LineListPairs(self):
         for code in self.conventions:
             self.conventionByTypes[code] = []
         for code in self.warnings:
@@ -152,9 +153,9 @@ class cleanOutput:
         # Test prints self.conventions dictionary
         # for convention in self.conventions:
         #     print(convention, self.conventions[convention])
-    def clean():
+    def clean(self):
         # ICRWEF
-        pylint_stdout, pylint_stderr = epylint.py_run(self.fname + ' ' + options, return_std=True)
+        pylint_stdout, pylint_stderr = epylint.py_run(self.fname + ' ' + self.options, return_std=True)
         # TODO: Not sure what the following line does yet, need to test out on more example files
         # print(pylint_stderr.getvalue())
         output = pylint_stdout.getvalue()
@@ -197,15 +198,15 @@ class cleanOutput:
 
         # handling input from report:
         if ('c' in self.report) or ('C' in self.report):
-            printconventions(self.conventionByTypes, codeToNames, codeMessagesDict)
+            self.printconventions(codeToNames, codeMessagesDict)
         if ('r' in self.report) or ('R' in self.report):
-            printrefactors(self.refactorByTypes, codeToNames, codeMessagesDict)
+            self.printrefactors(codeToNames, codeMessagesDict)
         if ('w' in self.report) or ('W' in self.report):
-            printwarnings(self.warningByTypes, codeToNames, codeMessagesDict)
+            self.printwarnings(codeToNames, codeMessagesDict)
         if ('e' in self.report) or ('E' in self.report) or (self.errorByTypes["E0001"] != []):
-            printerrors(self.errorByTypes, codeToNames, codeMessagesDict)
+            self.printerrors(codeToNames, codeMessagesDict)
         if ('f' in self.report) or ('F' in self.report):
-            printfatals(self.fatalByTypes, codeToNames, codeMessagesDict)
+            self.printfatals(codeToNames, codeMessagesDict)
 
 def main():
     options = '--enable=all '  # all messages will be shown
@@ -217,7 +218,7 @@ def main():
     originalCode = list(codeFile)
     #print(originalCode)
     codeFile.close()
-    out = cleanOutput(fname, report, originalCode)
+    out = cleanOutput(fname, report, originalCode, options)
     out.clean()
 
 if __name__ == "__main__":
