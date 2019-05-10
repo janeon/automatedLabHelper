@@ -45,16 +45,20 @@ if __name__ == '__main__':
 but would not return an error if `test()` was replaced with `retVal = test()`. It doesn't work in all cases yet (for instance, it would return an error for something like `print(test())`).
 
 ### interface.py
-Our lab helper program can be run from the command line using `cleanOutput.py` (explained above), or using a Tkinter interface. The interface can be run using
+Our lab helper program can be run from the command line using `cleanOutput.py` (explained above), or using a Tkinter interface. The interface can be run by first running
 
-```bash
+``` python3 install.py
+```
+which opens up a launcher window for the virtual environment, followed by
+```
 python3 interface.py
 ```
 
 This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (super original I know).
 
-### install.py??
+### install.py?? 
 ### installation.py??? Which of theses are still needed? Which can be removed?
+likely that this one can be removed, could we test it on a lab machine sometime today? It'll take a second
 
 ### more stuff from earlier versions of the readme:
 
