@@ -42,7 +42,7 @@ These 5 error types are the same as those used by pylint (see https://docs.pylin
 ### regexChecks.py
 `regexChecks.py` contains a function called `check(line)`, which takes in a string and compares it to each of the defined regexes. `regexChecks.py` is called by `cleanOutput.py` to help catch syntax errors caused by mistakes such as forgetting colons and parentheses.
 
-### checkers/return-not-caught-checker.py
+### checkers/return-not-caught-checker.py (located under checkers folder)
 
 `return-not-caught-checker.py` is a checker for pylint. It checks whether a function has a return value. If the function is called, it checks whether the return value from the function is saved. For example, it would produce a warning for the following code:
 
@@ -59,28 +59,18 @@ if __name__ == '__main__':
 
 but would not return an error if `test()` was replaced with `retVal = test()`. It doesn't work in all cases yet (for instance, it would return an error for something like `print(test())`).
 
-### installation.py??? Which of theses are still needed? Which can be removed?
-likely that this one can be removed, could we test it on a lab machine sometime today? It'll take a second
-
 ### more stuff from earlier versions of the readme:
 
 ### TODO:
-- Make it possible to run cleanoutput on interface
 - Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos / articles / documentation.
 
 ### DONE:
 - Basic interface for making installing and file browsing easier
+- Make it possible to run cleanoutput on interface
 - Written a custom checker
 - Figure out how to package pylint in environments
 
-Code types:
-
-"I": "info",
-"C": "convention",
-"R": "refactor",
-"W": "warning",
-"E": "error",
-"F": "fatal"
+### Other miscellany
 
 List of some codes: http://pylint-messages.wikidot.com/all-codes (has been copied to allCodes.txt for cleaning)
 
