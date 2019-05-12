@@ -201,23 +201,6 @@ def main():
             codeMessagesDict[code].append("L" + line + ": " + warningMessage)
         else:
             codeMessagesDict[code] = ["L" + line + ": "+ warningMessage]
-        # print(type,code,name)
-        # print(warningMessage)
-    # print(codeMessagesDict)
-
-    #for cmd in report:
-    ########## (i changed this b/c if you did "WCRRRRRRR" it would print R like 7 times. also I wanted
-    ##########  to modify it to print syntax errors even if 'E' wasn't selected in report.)
-        # if cmd in ['c', 'C']:
-        #     printConventions(conventionByTypes, report, codeToNames, codeMessagesDict)
-        # elif cmd in ['w','W']:
-        #     printwarnings(warningByTypes, report, codeToNames, codeMessagesDict)
-        # elif cmd in ['e','E']:
-        #     printerrors(errorByTypes, report, codeToNames, codeMessagesDict, originalCode)
-        # elif cmd in ['r','R']:
-        #     printrefactors(refactorByTypes, report, codeToNames, codeMessagesDict)
-        # elif cmd in ['f','F']:
-        #     printfatals(fatalByTypes, report, codeToNames, codeMessagesDict)
 
     # handling input from report:
     if ('c' in report) or ('C' in report):
