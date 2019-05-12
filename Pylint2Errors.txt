@@ -1,0 +1,283 @@
+not-async-context-manager (E1701):</th>Async context manager '%s' doesn't implement __aenter__ and __aexit__.
+yield-inside-async-function (E1700):</th>Yield inside async function
+not-in-loop (E0103):</th>%r not properly in loop
+continue-in-finally (E0116):</th>'continue' not supported inside 'finally' clause
+abstract-class-instantiated (E0110):</th>Abstract class %r with abstract methods instantiated
+star-needs-assignment-target (E0114):</th>Can use starred expression only in assignment target
+return-in-init (E0101):</th>Explicit return in __init__
+too-many-star-expressions (E0112):</th>More than one starred expression in assignment
+nonlocal-and-global (E0115):</th>Name %r is nonlocal and global
+used-prior-global-declaration (E0118):</th>Name %r is used prior to global declaration
+return-outside-function (E0104):</th>Return outside function
+return-arg-in-generator (E0106):</th>Return with argument inside generator
+invalid-star-assignment-target (E0113):</th>Starred assignment target must be in a list or tuple
+bad-reversed-sequence (E0111):</th>The first reversed() argument is not a sequence
+nonexistent-operator (E0107):</th>Use of the non-existent %s operator
+yield-outside-function (E0105):</th>Yield outside function
+init-is-generator (E0100):</th>__init__ method is a generator
+misplaced-format-function (E0119):</th>format function is not called on str
+nonlocal-without-binding (E0117):</th>nonlocal name %s found without binding
+lost-exception (W0150):</th>%s statement in finally block may swallow exception
+assert-on-tuple (W0199):</th>Assert called on a 2-uple. Did you mean 'assert x,y'?
+comparison-with-callable (W0143):</th>Comparing against a callable, did you omit the parenthesis?
+dangerous-default-value (W0102):</th>Dangerous default value %s as argument
+duplicate-key (W0109):</th>Duplicate key %r in dictionary
+useless-else-on-loop (W0120):</th>Else clause on loop without a break statement
+expression-not-assigned (W0106):</th>Expression %s is assigned to nothing
+confusing-with-statement (W0124):</th>Following as with another context manager looks like a tuple.
+unnecessary-lambda (W0108):</th>Lambda may not be necessary
+assign-to-new-keyword (W0111):</th>Name %s will become a keyword in Python %s
+pointless-statement (W0104):</th>Statement seems to have no effect
+pointless-string-statement (W0105):</th>String statement has no effect
+unnecessary-pass (W0107):</th>Unnecessary pass statement
+unreachable (W0101):</th>Unreachable code
+eval-used (W0123):</th>Use of eval
+exec-used (W0122):</th>Use of exec
+using-constant-test (W0125):</th>Using a conditional statement with a constant value
+missing-parentheses-for-call-in-test (W0126):</th>Using a conditional statement with potentially wrong function or method call due to missing parentheses
+literal-comparison (R0123):</th>Comparison to literal
+comparison-with-itself (R0124):</th>Redundant comparison - %s
+invalid-name (C0103):</th>%s name %s doesn't conform to %s
+blacklisted-name (C0102):</th>Black listed name %s
+misplaced-comparison-constant (C0122):</th>Comparison should be %s
+singleton-comparison (C0121):</th>Comparison to %s should be %s
+empty-docstring (C0112):</th>Empty %s docstring
+missing-docstring (C0111):</th>Missing %s docstring
+unidiomatic-typecheck (C0123):</th>Using type() instead of isinstance() for a typecheck.
+access-member-before-definition (E0203):</th>Access to member %r before its definition line %s
+method-hidden (E0202):</th>An attribute defined in %s line %s hides this method
+assigning-non-slot (E0237):</th>Assigning to attribute %r not defined in class slots
+inconsistent-mro (E0240):</th>Inconsistent method resolution order for class %r
+invalid-slots (E0238):</th>Invalid __slots__ object
+invalid-slots-object (E0236):</th>Invalid object %r in __slots__, must contain only non empty strings
+no-method-argument (E0211):</th>Method has no argument
+no-self-argument (E0213):</th>Method should have self as first argument
+unexpected-special-method-signature (E0302):</th>The special method %r expects %s param(s), %d %s given
+class-variable-slots-conflict (E0242):</th>Value %r in slots conflicts with class variable
+non-iterator-returned (E0301):</th>__iter__ returns non-iterator
+invalid-length-returned (E0303):</th>__len__ does not return non-negative integer
+protected-access (W0212):</th>Access to a protected member %s of a client class
+attribute-defined-outside-init (W0201):</th>Attribute %r defined outside __init__
+abstract-method (W0223):</th>Method %r is abstract in class %r but is not overridden
+arguments-differ (W0221):</th>Parameters differ from %s %r method
+signature-differs (W0222):</th>Signature differs from %s %r method
+bad-staticmethod-argument (W0211):</th>Static method with %r as first argument
+useless-super-delegation (W0235):</th>Useless super delegation in method %r
+non-parent-init-called (W0233):</th>__init__ method from a non direct base class %r is called
+super-init-not-called (W0231):</th>__init__ method from base class %r is not called
+useless-object-inheritance (R0205):</th>Class %r inherits from object, can be safely removed from bases in python3
+no-classmethod-decorator (R0202):</th>Consider using a decorator instead of calling classmethod
+no-self-use (R0201):</th>Method could be a function
+single-string-used-for-slots (C0205):</th>Class __slots__ should be a non-string iterable
+bad-classmethod-argument (C0202):</th>Class method %s should have %s as first argument
+bad-mcs-classmethod-argument (C0204):</th>Metaclass class method %s should have %s as first argument
+bad-mcs-method-argument (C0203):</th>Metaclass method %s should have %s as first argument
+method-check-failed (F0202):</th>Unable to check methods signature (%s / %s)
+too-few-public-methods (R0903):</th>Too few public methods (%s/%s)
+too-many-ancestors (R0901):</th>Too many ancestors (%s/%s)
+too-many-arguments (R0913):</th>Too many arguments (%s/%s)
+too-many-branches (R0912):</th>Too many branches (%s/%s)
+too-many-instance-attributes (R0902):</th>Too many instance attributes (%s/%s)
+too-many-locals (R0914):</th>Too many local variables (%s/%s)
+too-many-public-methods (R0904):</th>Too many public methods (%s/%s)
+too-many-return-statements (R0911):</th>Too many return statements (%s/%s)
+too-many-statements (R0915):</th>Too many statements (%s/%s)
+bad-except-order (E0701):</th>Bad except clauses order (%s)
+catching-non-exception (E0712):</th>Catching an exception which doesn't inherit from Exception: %s
+bad-exception-context (E0703):</th>Exception context set to something which is not an exception, nor None
+notimplemented-raised (E0711):</th>NotImplemented raised - should raise NotImplementedError
+raising-bad-type (E0702):</th>Raising %s while only classes or instances are allowed
+raising-non-exception (E0710):</th>Raising a new style class which doesn't inherit from BaseException
+misplaced-bare-raise (E0704):</th>The raise statement is not inside an except clause
+duplicate-except (W0705):</th>Catching previously caught exception type %s
+broad-except (W0703):</th>Catching too general exception %s
+raising-format-tuple (W0715):</th>Exception arguments suggest string formatting might be intended
+binary-op-exception (W0711):</th>Exception to catch is the result of a binary %s operation
+wrong-exception-operation (W0716):</th>Invalid exception operation. %s
+bare-except (W0702):</th>No exception type(s) specified
+try-except-raise (W0706):</th>The except handler raises immediately
+bad-indentation (W0311):</th>Bad indentation. Found %s %s, expected %s
+mixed-indentation (W0312):</th>Found indentation with %ss instead of %ss
+unnecessary-semicolon (W0301):</th>Unnecessary semicolon
+bad-whitespace (C0326):</th>%s space %s %s %s
+missing-final-newline (C0304):</th>Final newline missing
+mixed-line-endings (C0327):</th>Mixed line endings LF and CRLF
+too-many-lines (C0302):</th>Too many lines in module (%s/%s)
+trailing-whitespace (C0303):</th>Trailing whitespace
+superfluous-parens (C0325):</th>Unnecessary parens after %r keyword
+bad-continuation (C0330):</th>Wrong %s indentation%s%s.</em>
+relative-beyond-top-level (E0402):</th>Attempted relative import beyond top-level package
+import-error (E0401):</th>Unable to import %s
+preferred-module (W0407):</th>Prefer importing %r instead of %r
+relative-import (W0403):</th>Relative import %r, should be %r
+deprecated-module (W0402):</th>Uses of a deprecated module %r
+misplaced-future (W0410):</th>__future__ import is not the first non docstring statement
+cyclic-import (R0401):</th>Cyclic import (%s)
+wrong-import-order (C0411):</th>%s should be placed before %s
+wrong-import-position (C0413):</th>Import %s should be placed at the top of the module
+useless-import-alias (C0414):</th>Import alias does not rename original package
+ungrouped-imports (C0412):</th>Imports from package %s are not grouped
+logging-format-truncated (E1201):</th>Logging format string ends in middle of conversion specifier
+logging-too-few-args (E1206):</th>Not enough arguments for logging format string
+logging-unsupported-format (E1200):</th>Unsupported logging format character %r (%#02x) at index %d
+logging-not-lazy (W1201):</th>Specify string format arguments as logging function parameters</em>
+logging-format-interpolation (W1202):</th>Use % formatting in logging functions and pass the % parameters as arguments
+logging-fstring-interpolation (W1203):</th>Use % formatting in logging functions and pass the % parameters as arguments
+invalid-encoded-data (W0512):</th>Cannot decode using encoding %s, unexpected byte at position %d
+use-symbolic-message-instead (I0023):</th>Used when a message is enabled or disabled by id.
+bad-super-call (E1003):</th>Bad first argument %r given to super()
+missing-super-argument (E1004):</th>Missing argument to super()
+unpacking-in-except (E1603):</th>Implicit unpacking of exceptions is not supported in Python 3
+(E1609):</th>Import * only allowed at module level
+non-ascii-bytes-literal (E1610):</th>Non-ascii bytes literals not supported in 3.x
+parameter-unpacking (E1602):</th>Parameter unpacking specified
+long-suffix (E1606):</th>Use of long suffix
+old-octal-literal (E1608):</th>Use of old octal literal
+old-ne-operator (E1607):</th>Use of the <> operator
+backtick (E1605):</th>Use of the `` operator
+old-raise-syntax (E1604):</th>Use raise ErrorClass(args) instead of raise ErrorClass, args.
+print-statement (E1601):</th>print statement used
+deprecated-itertools-function (W1651):</th>Accessing a deprecated function on the itertools module
+deprecated-operator-function (W1657):</th>Accessing a removed attribute on the operator module
+deprecated-sys-function (W1660):</th>Accessing a removed attribute on the sys module
+deprecated-urllib-function (W1658):</th>Accessing a removed attribute on the urllib module
+xreadlines-attribute (W1659):</th>Accessing a removed xreadlines attribute
+metaclass-assignment (W1623):</th>Assigning to a class's __metaclass__ attribute
+next-method-called (W1622):</th>Called a next() method on an object
+dict-iter-method (W1620):</th>Calling a dict.iter*() method
+dict-view-method (W1621):</th>Calling a dict.view*() method
+exception-message-attribute (W1645):</th>Exception.message removed in Python 3
+eq-without-hash (W1641):</th>Implementing __eq__ without also implementing __hash__
+indexing-exception (W1624):</th>Indexing exceptions will not work on Python 3
+bad-python3-import (W1648):</th>Module moved in Python 3
+standarderror-builtin (W1611):</th>StandardError built-in referenced
+comprehension-escape (W1662):</th>Using a variable that was bound inside a comprehension
+exception-escape (W1661):</th>Using an exception object that was bound by an except handler
+deprecated-str-translate-call (W1650):</th>Using str.translate with deprecated deletechars parameters
+using-cmp-argument (W1640):</th>Using the cmp argument for list.sort / sorted
+cmp-method (W1630):</th>__cmp__ method defined
+delslice-method (W1615):</th>__delslice__ method defined
+div-method (W1642):</th>__div__ method defined
+getslice-method (W1616):</th>__getslice__ method defined
+idiv-method (W1643):</th>__idiv__ method defined
+nonzero-method (W1629):</th>__nonzero__ method defined
+rdiv-method (W1644):</th>__rdiv__ method defined
+setslice-method (W1617):</th>__setslice__ method defined
+basestring-builtin (W1602):</th>basestring built-in referenced
+buffer-builtin (W1603):</th>buffer built-in referenced
+coerce-builtin (W1605):</th>coerce built-in referenced
+dict-items-not-iterating (W1654):</th>dict.items referenced when not iterating
+dict-keys-not-iterating (W1655):</th>dict.keys referenced when not iterating
+dict-values-not-iterating (W1656):</th>dict.values referenced when not iterating
+old-division (W1619):</th>division w/o __future__ statement
+file-builtin (W1607):</th>file built-in referenced
+filter-builtin-not-iterating (W1639):</th>filter built-in referenced when not iterating
+no-absolute-import (W1618):</th>import missing `from __future__ import absolute_import`</em>
+input-builtin (W1632):</th>input built-in referenced
+intern-builtin (W1634):</th>intern built-in referenced
+map-builtin-not-iterating (W1636):</th>map built-in referenced when not iterating
+next-method-defined (W1653):</th>next method defined
+invalid-str-codec (W1646):</th>non-text encoding used in str.decode
+range-builtin-not-iterating (W1638):</th>range built-in referenced when not iterating
+raw_input-builtin (W1609):</th>raw_input built-in referenced
+reduce-builtin (W1610):</th>reduce built-in referenced
+reload-builtin (W1626):</th>reload built-in referenced
+round-builtin (W1633):</th>round built-in referenced
+sys-max-int (W1647):</th>sys.maxint removed in Python 3
+unicode-builtin (W1612):</th>unicode built-in referenced
+zip-builtin-not-iterating (W1637):</th>zip built-in referenced when not iterating
+simplify-boolean-expression (R1709):</th>Boolean expression may be simplified to %s
+consider-using-in (R1714):</th>Consider merging these comparisons with in to %r
+consider-merging-isinstance (R1701):</th>Consider merging these isinstance calls to isinstance(%s, (%s))
+consider-using-dict-comprehension (R1717):</th>Consider using a dictionary comprehension
+consider-using-set-comprehension (R1718):</th>Consider using a set comprehension
+consider-using-get (R1715):</th>Consider using dict.get for getting values from a dict if a key is present or a default if not
+consider-using-join (R1713):</th>Consider using str.join(sequence) for concatenating strings from an iterable
+consider-using-ternary (R1706):</th>Consider using ternary (%s)
+consider-swap-variables (R1712):</th>Consider using tuple unpacking for swapping variables
+trailing-comma-tuple (R1707):</th>Disallow trailing comma tuple
+stop-iteration-return (R1708):</th>Do not raise StopIteration in generator, use return statement instead
+inconsistent-return-statements (R1710):</th>Either all return statements in a function should return an expression, or none of them should.
+redefined-argument-from-local (R1704):</th>Redefining argument with the local name %r
+chained-comparison (R1716):</th>Simplify chained comparison between the operands
+simplifiable-if-expression (R1719):</th>The if expression can be replaced with %s
+too-many-nested-blocks (R1702):</th>Too many nested blocks (%s/%s)
+no-else-raise (R1720):</th>Unnecessary %s after raise
+no-else-return (R1705):</th>Unnecessary %s after return
+useless-return (R1711):</th>Useless return at end of function or method
+unneeded-not (C0113):</th>Consider changing %s to %s
+consider-iterating-dictionary (C0201):</th>Consider iterating the dictionary directly instead of calling .keys()
+consider-using-enumerate (C0200):</th>Consider using enumerate instead of iterating with range and len
+len-as-condition (C1801):</th>Do not use `len(SEQUENCE)` without comparison to determine if a sequence is empty
+duplicate-code (R0801):</th>Similar lines in %s files
+invalid-characters-in-docstring (C0403):</th>Invalid characters %r in a docstring
+wrong-spelling-in-docstring (C0402):</th>Wrong spelling of a word '%s' in a docstring:
+invalid-envvar-value (E1507):</th>%s does not support %s type argument
+bad-open-mode (W1501):</th>%s is not a valid mode for open.
+invalid-envvar-default (W1508):</th>%s default type is %s. Expected str or None.
+redundant-unittest-assert (W1503):</th>Redundant use of %s with constant value %r
+shallow-copy-environ (W1507):</th>Using copy.copy(os.environ). Use os.environ.copy() instead.
+boolean-datetime (W1502):</th>Using datetime.time in a boolean context.
+deprecated-method (W1505):</th>Using deprecated method %s()
+subprocess-popen-preexec-fn (W1509):</th>Using preexec_fn keyword which may be unsafe in the presence of threads
+subprocess-run-check (W1510):</th>Using subprocess.run without explicitly set `check` is not recommended.
+bad-thread-instantiation (W1506):</th>threading.Thread needs the target function
+bad-string-format-type (E1307):</th>Argument %r does not match format type %r
+format-needs-mapping (E1303):</th>Expected mapping for format string, not %s
+truncated-format-string (E1301):</th>Format string ends in middle of conversion specifier
+missing-format-string-key (E1304):</th>Missing key %r in format string dictionary
+mixed-format-string (E1302):</th>Mixing named and unnamed conversion specifiers in format string
+too-few-format-args (E1306):</th>Not enough arguments for format string
+bad-str-strip-call (E1310):</th>Suspicious argument in %s.%s call
+too-many-format-args (E1305):</th>Too many arguments for format string
+bad-format-character (E1300):</th>Unsupported format character %r (%#02x) at index %d
+anomalous-unicode-escape-in-string (W1402):</th>Anomalous Unicode escape in byte string: '%s'. String constant might be missing an r or u prefix.
+anomalous-backslash-in-string (W1401):</th>Anomalous backslash in string: '%s'. String constant might be missing an r prefix.
+duplicate-string-formatting-argument (W1308):</th>Duplicate string formatting argument %r, consider passing as named argument
+format-combined-specification (W1305):</th>Format string contains both automatic field numbering and manual field specification
+bad-format-string-key (W1300):</th>Format string dictionary key should be a string, not %s
+implicit-str-concat-in-sequence (W1403):</th>Implicit string concatenation found in %s
+bad-format-string (W1302):</th>Invalid format string
+missing-format-attribute (W1306):</th>Missing format attribute %r in format specifier %r
+missing-format-argument-key (W1303):</th>Missing keyword argument %r for format string
+unused-format-string-argument (W1304):</th>Unused format argument %r
+unused-format-string-key (W1301):</th>Unused key %r in format string dictionary
+invalid-format-index (W1307):</th>Using invalid lookup key %r in format specifier %r
+unsupported-assignment-operation (E1137):</th>%r does not support item assignment
+unsupported-delete-operation (E1138):</th>%r does not support item deletion
+invalid-unary-operand-type (E1130):</th>Emitted when a unary operand is used on an object which does not support this type of operation.
+unsupported-binary-operation (E1131):</th>Emitted when a binary arithmetic operation between two operands is not supported.
+no-member (E1101):</th>%s %r has no %r member%s
+redundant-keyword-arg (E1124):</th>Argument %r passed by position and keyword in %s call
+assignment-from-no-return (E1111):</th>Assigning result of a function call, where the function has no return
+assignment-from-none (E1128):</th>Assigning result of a function call, where the function returns None
+not-context-manager (E1129):</th>Context manager '%s' doesn't implement __enter__ and __exit__.
+unhashable-dict-key (E1140):</th>Dict key is unhashable
+invalid-metaclass (E1139):</th>Invalid metaclass %r used
+missing-kwoa (E1125):</th>Missing mandatory keyword argument %r in %s call
+not-an-iterable (E1133):</th>Non-iterable value %s is used in an iterating context
+invalid-sequence-index (E1126):</th>Sequence index is not an int, slice, or instance with __index__
+invalid-slice-index (E1127):</th>Slice index is not an int, None, or instance with __index__
+too-many-function-args (E1121):</th>Too many positional arguments for %s call
+unexpected-keyword-arg (E1123):</th>Unexpected keyword argument %r in %s call
+dict-iter-missing-items (E1141):</th>Unpacking a dictionary in iteration without calling .items()
+unsupported-membership-test (E1135):</th>Value '%s' doesn't support membership test
+unsubscriptable-object (E1136):</th>Value '%s' is unsubscriptable
+keyword-arg-before-vararg (W1113):</th>Keyword argument before variable positional arguments list in the definition of %s function
+c-extension-no-member (I1101):</th>%s %r has no %r member%s, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects.
+unpacking-non-sequence (E0633):</th>Attempting to unpack a non-sequence%s
+no-name-in-module (E0611):</th>No name %r in module %r
+undefined-all-variable (E0603):</th>Undefined variable name %r in __all__
+cell-var-from-loop (W0640):</th>Cell variable %s defined in loop
+global-variable-undefined (W0601):</th>Global variable %r undefined at the module level
+self-cls-assignment (W0642):</th>Invalid assignment to %s in method
+possibly-unused-variable (W0641):</th>Possibly unused variable %r
+redefined-builtin (W0622):</th>Redefining built-in %r
+redefined-outer-name (W0621):</th>Redefining name %r from outer scope (line %s)
+unused-argument (W0613):</th>Unused argument %r
+unused-wildcard-import (W0614):</th>Unused import %s from wildcard import
+unused-variable (W0612):</th>Unused variable %r
+global-variable-not-assigned (W0602):</th>Using global for %r but no assignment is done
+undefined-loop-variable (W0631):</th>Using possibly undefined loop variable %r
+global-statement (W0603):</th>Using the global statement
+global-at-module-level (W0604):</th>Using the global statement at the module level

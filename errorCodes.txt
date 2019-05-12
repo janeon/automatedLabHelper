@@ -2,6 +2,7 @@ C0102: Black listed name "%s"
 C0103: Invalid %s name "%s"
 C0111: Missing %s docstring
 C0112: Empty %s docstring
+C0113: Consider changing "%s" to "%s" 
 C0121: Missing required attribute "%s"
 C0200: Consider using enumerate instead of iterating with range and len
 C0201: Consider iterating the dictionary directly instead of calling .keys()
@@ -20,9 +21,10 @@ C0324: Comma not followed by a space
 C0325: Unnecessary parens after %r keyword
 C0326: %s space %s %s %s\n%s
 C0327: Mixed line endings LF and CRLF
-C0328: Unexpected line ending format. There is ‘%s’ while it should be ‘%s’.
+C0328: Unexpected line ending format. There is ‘%s’ while it should be ‘%s’
 C0325: Unnecessary parens after %r keyword
-C1001: Old-style class defined.
+C1001: Old-style class defined
+C1801: Do not use len(SEQUENCE) as condition value
 E0001: (syntax error raised for a module; message varies)
 E0011: Unrecognized file option %r
 E0012: Bad option value %r
@@ -115,6 +117,26 @@ R0915: Too many statements (%s/%s)
 R0921: Abstract class not referenced
 R0922: Abstract class is only referenced %s times
 R0923: Interface not implemented
+R1701: Consider merging these isinstance calls to isinstance(%s, (%s))
+R1702: Too many nested blocks (%s/%s)
+R1703: The if statement can be replaced with %s
+R1704: Redefining argument with the local name %r
+R1704: Unnecessary "%s" after "return"
+R1706: Consider using ternary (%s)
+R1707: Disallow trailing comma tuple
+R1708: Do not raise StopIteration in generator, use return statement instead
+R1709: Boolean expression may be simplified to %s
+R1710: Either all return statements in a function should return an expression, or none of them should.
+R1711: Useless return at end of function or method
+R1712: Consider using tuple unpacking for swapping variables
+R1713: Consider using str.join(sequence) for concatenating strings from an iterable
+R1714: Consider merging these comparisons with "in" to %r
+R1715: Consider using dict.get for getting values from a dict if a key is present or a default if not
+R1716: Simplify chained comparison between the operands
+R1717: Consider using a dictionary comprehension
+R1718: Consider using a set comprehension
+R1719: The if expression can be replaced with %s
+R1720: Unnecessary "%s" after "raise"
 W0001: Returns a non-unique constant.
 W0101: Unreachable code
 W0102: Dangerous default value %s as argument
@@ -128,6 +150,7 @@ W0110: map/filter on lambda could be replaced by comprehension
 W0120: Else clause on loop without a break statement
 W0121: Use raise ErrorClass(args) instead of raise ErrorClass, args.
 W0122: Use of exec
+W0123: Use of eval
 W0141: Used builtin function %r
 W0142: Used * or ** magic
 W0150: %s statement in finally block may swallow exception

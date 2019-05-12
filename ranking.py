@@ -8,15 +8,16 @@ def main():
     for code in codes:
         code = code.split(":")
         codeDict.update( {code[0] : 0} )
-    print(codeDict)
+    # print(codeDict)
 
     matchFiles = os.listdir("testFiles/match")
     for file in matchFiles:
-        fileName = "testFiles/match/"+file
-        call = "python3 cleanOutput.py "+fileName+" CWERF"
-        result = check_output(call.split(" ")).decode("utf-8")
-        #print(result)
-        
+        if file.endswith('.py'):
+            fileName = "testFiles/match/"+file
+            call = "python3 cleanOutput.py "+fileName+" CWERF"
+            result = check_output(call.split(" ")).decode("utf-8")
+            # print(result)
+    print("finished cleaning all")
 
 # what is the goal of this? to look through and see how many types of errors are found? Add them to some sort of dict?
 

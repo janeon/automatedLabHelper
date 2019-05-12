@@ -113,29 +113,49 @@ class cleanOutput:
                     for msg in msgs:
                         print('\t',msg)
 
-    def buildCode_MessagePairs(self, codes):
-        for i in range (0,25):
+    def buildCode_MessagePairs(self):
+        errorsFile = open("errorCodes.txt","r")
+        # this file was a result of cleaning
+        # http://pylint-messages.wikidot.com/all-codes
+        codes = list(errorsFile)
+        errorsFile.close()
+        for i in range (len(codes)):
             codeMessage = codes[i].split(": ")
-            self.conventions[codeMessage[0]] = codeMessage[1]
-        # print(self.conventions)
-        for i in range (25,84):
-            codeMessage = codes[i].split(": ")
-            self.errors[codeMessage[0]] = codeMessage[1]
-        # print(self.errors)
+            messageType = codes[i][0]
+            code = codeMessage[0]
+            codeMessage = codeMessage[1]
+            if (messageType == 'C'):
+                self.conventions[code] = codeMessage
+            elif (messageType == 'E'):
+                self.errors[code] = codeMessage
+            elif (messageType == 'F'):
+                self.fatals[code] = codeMessage
+            elif (messageType == 'R'):
+                self.refactors[code] = codeMessage
+            elif (messageType == 'W'):
+                self.warnings[code] = codeMessage
 
-        for i in range (84,92):
-            codeMessage = codes[i].split(": ")
-            self.fatals[codeMessage[0]] = codeMessage[1]
-
-        for i in range (102,117):
-            codeMessage = codes[i].split(": ")
-            self.refactors[codeMessage[0]] = codeMessage[1]
-        # print(self.refactors)
-
-        for i in range (117,186):
-            codeMessage = codes[i].split(": ")
-            self.warnings[codeMessage[0]] = codeMessage[1]
-
+        pylint2file = open("Pylint2Errors.txt","r")
+        # this file was a result of cleaning
+        # http://pylint.pycqa.org/en/latest/technical_reference/features.html#metrics-checker-reports
+        pylint2codes = list(pylint2file)
+        pylint2file.close()
+        for i in range (len(codes)):
+            line = pylint2codes[i].split("):</th>")
+            code = line[0].split("(")[1]
+            codeMessage = line[1]
+            if (messageType == 'C'):
+                self.conventions[code] = codeMessage
+            elif (messageType == 'E'):
+                self.errors[code] = codeMessage
+            elif (messageType == 'F'):
+                self.fatals[code] = codeMessage
+            elif (messageType == 'R'):
+                self.refactors[code] = codeMessage
+            elif (messageType == 'W'):
+                self.warnings[code] = codeMessage
+            else:
+                print("error code", code)
 
     def buildCode_LineListPairs(self):
         for code in self.conventions:
@@ -148,7 +168,6 @@ class cleanOutput:
             self.refactorByTypes[code] = []
         for code in self.fatals:
             self.fatalByTypes[code] = []
-        # print(conventionByTypes)
         ### end of processing convention messages
         # Test prints self.conventions dictionary
         # for convention in self.conventions:
@@ -165,9 +184,8 @@ class cleanOutput:
             warning = output[line].split(": ")
             lineNum = warning[0]
             messages[lineNum[1:]] = warning[1]
-        codes = list(open("errorCodes.txt","r"))
 
-        self.buildCode_MessagePairs(codes) # {code:message}
+        self.buildCode_MessagePairs() # {code:message}
         self.buildCode_LineListPairs()
 
         codeToNames = {} # {code : name}
@@ -214,6 +232,7 @@ def main():
     fname = sys.argv[1]
     report = list(sys.argv[2])
     #### read in fname, save in originalCode to use later
+    # print(fname)
     codeFile = open(fname,"r")
     originalCode = list(codeFile)
     #print(originalCode)
