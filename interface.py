@@ -32,26 +32,26 @@ def load_checkers():
    #filename = askopenfilename(parent=master)
    #f = open(filename)
    #return f
-   
+
 def load_file():
     fname = askopenfilename(filetypes=[("Python files","*.py")])
     command = "python3 cleanOutput.py "+fname+" CWERF"
     output = check_output(command.split(" ")).decode("utf-8").split('\n')
     fm = Frame(master)
-    scrollbar = Scrollbar(fm) 
+    scrollbar = Scrollbar(fm)
     #T = Text(fm, height=50, width = 100)
     T = Listbox(fm, yscrollcommand = scrollbar.set, width=80, height=50)
-    scrollbar.pack( side = RIGHT, fill = Y ) 
+    scrollbar.pack( side = RIGHT, fill = Y )
     for line in output:
         T.insert(END,'     '+line)
     T.pack(side=LEFT)
-    scrollbar.config( command = T.yview ) 
+    scrollbar.config( command = T.yview )
 
     button = Button(fm, text="Clear errors", command=fm.destroy)
     button.pack(side=BOTTOM)
     #fm.pack_propagate(0)
     fm.pack(side=LEFT)
-    
+
 master = Tk()
 master.title('Automated CS150 Lab Helper')
 #master.geometry("400x800")
