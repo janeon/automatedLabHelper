@@ -7,7 +7,7 @@ import regexChecks
 ticks = 45
 
 class cleanOutput:
-    def __init__(self, fname, report, originalCode, options):
+    def __init__(self, fname, report, options):
         self.conventions = {}
         self.warnings = {}
         self.errors = {}
@@ -19,10 +19,11 @@ class cleanOutput:
         self.refactorByTypes = {}
         self.codeToNames = {}
         self.codeMessagesDict = {}
+        self.codesFound = {}
         self.fatalByTypes = {}
         self.fname = fname
         self.report = report
-        self.originalCode = originalCode
+        self.originalCode = []
         self.options = options
 
 
@@ -180,6 +181,11 @@ class cleanOutput:
         pylint_stdout, pylint_stderr = epylint.py_run(self.fname + ' ' + self.options, return_std=True)
         # TODO: Not sure what the following line does yet, need to test out on more example files
         # print(pylint_stderr.getvalue())
+
+        codeFile = open(self.fname,"r")
+        self.originalCode = list(codeFile)
+        codeFile.close()
+
         output = pylint_stdout.getvalue()
         output = output.split(self.fname)
         messages = {} # {line : message}
@@ -190,9 +196,6 @@ class cleanOutput:
 
         self.buildCode_MessagePairs() # {code:message}
         self.buildCode_LineListPairs()
-
-        self.codeToNames = {} # {code : name}
-        self.codeMessagesDict = {} # {code : message}
 
         for line in messages:
             warning = messages[line]
@@ -214,9 +217,12 @@ class cleanOutput:
                 self.fatalByTypes[code].append(line)
             if code in self.codeMessagesDict:
                 self.codeMessagesDict[code].append("L" + line + ": " + warningMessage)
+                self.codesFound[code] += 1
             else:
                 self.codeMessagesDict[code] = ["L" + line + ": "+ warningMessage]
+                self.codesFound[code] = 1
 
+    def printClean(self):
         # handling input from report:
         if ('c' in self.report) or ('C' in self.report):
             self.printconventions()
@@ -236,12 +242,13 @@ def main():
     report = list(sys.argv[2])
     #### read in fname, save in originalCode to use later
     # print(fname)
-    codeFile = open(fname,"r")
-    originalCode = list(codeFile)
+    #codeFile = open(fname,"r")
+    #originalCode = list(codeFile)
     #print(originalCode)
-    codeFile.close()
-    out = cleanOutput(fname, report, originalCode, options)
+    #codeFile.close()
+    out = cleanOutput(fname, report, options)
     out.clean()
+    out.printClean()
 
 if __name__ == "__main__":
     main()
