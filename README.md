@@ -45,7 +45,6 @@ These 5 error types are the same as those used by pylint (see https://docs.pylin
 ### ranking.py
 
 `ranking.py` takes in a list of folders and reads each python file in each of the folders. It then outputs a list of pylint errors and the number of times each error was found throughout all the files. Call `ranking.py` as follows:
-
 ```
 ranking.py [-h] [-a] [-p] folders [folders ...]
 ```
