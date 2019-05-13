@@ -11,7 +11,7 @@ Our project is an automated lab helper designed to help CSCI 150 students find b
 ### interface.py
 Our lab helper program can be run from the command line using `cleanOutput.py` (explained below), or using a Tkinter interface. The interface can be installed and run with
 
-``` 
+```
 python3 install.py
 ```
 which opens up a launcher window for the virtual environment, followed by
@@ -25,22 +25,43 @@ This will not only run pylint, it will also install the latest versions of pip, 
 ### cleanOutput.py
 `cleanOutput.py` post-processes pylint output into more readable, less redundant output. Users who desired to see their output straight from the command line rather than through the tkinter interface can run `cleanOutput.py` through the command line using the command
 
-```bash
+```
 python3 cleanOutput.py [filename] [{c,r,w,e,f,C,R,W,E,F}`<sup>\*</sup>`]
 ```
 
-where the final parameter is a string containing some subset of the characters `CRWEF`. ((**This isn't really true rn??:** Lowercase 'c','r', 'w','e',and 'f' lists line numbers where convention/warning messages are found for each type of message (organized by error code), while their capitalized counterparts give the full list of messages outputted from pylint in addition to the lists of line numbers by error type.)) The meanings of each letter is as follows:
+where the final parameter is a string containing some subset of the characters `CRWEFcwerf`. Lowercase 'c','r', 'w','e',and 'f' lists line numbers where convention/warning messages are found for each type of message (organized by error code), while their capitalized counterparts give the full list of messages outputted from pylint in addition to the lists of line numbers by error type. The meanings of each letter is as follows:
 
-* **C (Convention):**  denotes style-based warnings. They don't have anything to do with the correctness of the code, but simply check whether the code matches python code conventions/standards, and so they can for the most part be safely ignored by 150 students when debugging.
-* **R (Refactor):** denotes warnings for bad "code smell", which means code that is generally written in a way that isn't optimal (i.e. includes duplicated code, large and confusing classes, etc.).
-* **W (Warning):** refers to warnings related to python specifically. These will likely be useful for 150 stuents to look at.
-* **E (Error):** refers to actual bugs in the code. Errors are also generally important to look at.
-* **F (Fatal):** means that there is a problem with the output of pylint. ((check this))
+* **C/c (Convention):**  denotes style-based warnings. They don't have anything to do with the correctness of the code, but simply check whether the code matches python code conventions/standards, and so they can for the most part be safely ignored by 150 students when debugging.
+* **R/r (Refactor):** denotes warnings for bad "code smell", which means code that is generally written in a way that isn't optimal (i.e. includes duplicated code, large and confusing classes, etc.).
+* **W/w (Warning):** refers to warnings related to python specifically. These will likely be useful for 150 stuents to look at.
+* **E/e (Error):** refers to actual bugs in the code. Errors are also generally important to look at.
+* **F/f (Fatal):** means that there is a problem with the output of pylint. ((check this))
 
 These 5 error types are the same as those used by pylint (see https://docs.pylint.org/en/1.6.0/tutorial.html).
 
 ### regexChecks.py
 `regexChecks.py` contains a function called `check(line)`, which takes in a string and compares it to each of the defined regexes. `regexChecks.py` is called by `cleanOutput.py` to help catch syntax errors caused by mistakes such as forgetting colons and parentheses.
+
+### ranking.py
+
+`ranking.py` takes in a list of folders and reads each python file in each of the folders. It then outputs a list of pylint errors and the number of times each error was found throughout all the files. Call `ranking.py` as follows:
+
+```
+ranking.py [-h] [-a] [-p] folders [folders ...]
+```
+where `-h` displays the following information:
+```
+positional arguments:
+  folders         list the paths to folders you want to read from (including /
+                  after folder name)
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -a, --all       print all errors (including those with value 0)
+  -p, --progress  print the name of each file as it is processed
+```
+
+By default, `ranking.py` will only output error codes with prevalences greater than 0.
 
 ### checkers/return-not-caught-checker.py (located under checkers folder)
 
