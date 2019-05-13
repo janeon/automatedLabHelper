@@ -10,9 +10,10 @@ def combine_funcs(*funcs):
             f(*args, **kwargs)
     return combined_func
 def install():
-    os.system("python3 installation.py")
+    #os.system("python3 installation.py")
     os.system("virtualenv -p python3 virtual 1> /dev/null")
     os.system("/bin/bash  --rcfile virtual/bin/activate 1> /dev/null")
+    os.system("pip3 install pylint")
 
 master = Tk()
 master.title('Lab Helper Launcher')

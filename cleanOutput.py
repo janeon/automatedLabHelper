@@ -237,7 +237,7 @@ class cleanOutput:
 
 def main():
     options = '--enable=all '  # all messages will be shown
-    options += '--reports=y'  # also print the reports (ascii tables at the end)
+    #options += '--reports=y'  # also print the reports (ascii tables at the end)
     fname = sys.argv[1]
     report = list(sys.argv[2])
     #### read in fname, save in originalCode to use later
