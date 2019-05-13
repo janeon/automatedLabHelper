@@ -8,18 +8,16 @@ Our project is an automated lab helper designed to help CSCI 150 students find b
 
 ## Files
 
-### interface.py
+### helper.py
 Our lab helper program can be run from the command line using `cleanOutput.py` (explained below), or using a Tkinter interface. The interface can be installed and run with
 
 ```
-python3 install.py
+python3 launch.py
 ```
-which opens up a launcher window for the virtual environment, followed by
+which opens up a launcher window for the virtual environment (installs the latest versions of pip and pylint). Once inside the virutal environment named "virtual", call
 ```
-python3 interface.py
+python3 helper.py
 ```
-
-This will not only run pylint, it will also install the latest versions of pip, pylint, and virtualenv (in case your environment doesn't have them already) inside the virtual environment called virtual (which will appear in parentheses on the left of each CLI line).
 
 
 ### cleanOutput.py
