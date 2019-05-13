@@ -22,15 +22,15 @@ def main():
         codeDict[code] = codeMessage
 
     filesFolders = ["imageEdit", "match", "primes"]
-    files = "imageEdit"
-    matchFiles = os.listdir("testFiles/"+files)
-    for file in matchFiles:
-        if file.endswith('.py'):
-            fileName = "testFiles/"+files+"/"+file
-            call = "python3 cleanOutput.py "+fileName+" CWERF"
-            result = check_output(call.split(" ")).decode("utf-8")
-            # print(result)
-            print("finished", fileName)
+    for folder in filesFolders:
+        matchFiles = os.listdir("testFiles/"+folder)
+        for file in matchFiles:
+            if file.endswith('.py'):
+                fileName = "testFiles/"+folder+"/"+file
+                call = "python3 cleanOutput.py "+fileName+" CWERF"
+                result = check_output(call.split(" ")).decode("utf-8")
+                # print(result)
+                # print("finished", fileName)
 
 # what is the goal of this? to look through and see how many types of errors are found? Add them to some sort of dict?
 

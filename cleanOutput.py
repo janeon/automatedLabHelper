@@ -17,58 +17,61 @@ class cleanOutput:
         self.warningByTypes = {} # {code : [line numbers]} where code is of type W
         self.errorByTypes = {}
         self.refactorByTypes = {}
+        self.codeToNames = {}
+        self.codeMessagesDict = {}
         self.fatalByTypes = {}
         self.fname = fname
         self.report = report
         self.originalCode = originalCode
         self.options = options
 
-    def printconventions(self, codeToNames, codeMessagesDict):
+
+    def printconventions(self):
         print()
         print((' '*ticks)+"CONVENTION CHECKS"+(' '*ticks))
         for code in self.conventionByTypes:
             lines = self.conventionByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" convention reminders \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" convention reminders \n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
                 if 'C' in self.report:
-                    msgs = codeMessagesDict[code]
+                    msgs = self.codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
 
-    def printwarnings(self, codeToNames, codeMessagesDict):
+    def printwarnings(self):
         print()
         print((' '*ticks)+"WARNING  CHECKS"+(' '*ticks))
         for code in self.warningByTypes:
             lines = self.warningByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" self.warnings \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" self.warnings \n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
                 if 'W' in self.report:
-                    msgs = codeMessagesDict[code]
+                    msgs = self.codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
 
-    def printerrors(self, codeToNames, codeMessagesDict):
+    def printerrors(self):
         print()
         print((' '*ticks)+"ERROR  CHECKS"+(' '*ticks))
         if self.errorByTypes["E0001"] != []:
-            print("Found 1", "\""+codeToNames["E0001"]+ "\" self.errors \n\t located on line ", end="")
+            print("Found 1", "\""+self.codeToNames["E0001"]+ "\" self.errors \n\t located on line ", end="")
             l = self.errorByTypes["E0001"]
             print(l[0])
             print('\t',"Note: While you have a syntax error, output from other code checks won't show up.\n")
 
             match = regexChecks.check(self.originalCode[int(l[0])-1])
-            print('\t',codeMessagesDict["E0001"][0],'\t',match)
+            print('\t',self.codeMessagesDict["E0001"][0],'\t',match)
         else:
             for code in self.errorByTypes:
                 lines = self.errorByTypes[code]
                 if lines:
-                    print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" self.errors \n\t located on line(s) ", end="")
+                    print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" self.errors \n\t located on line(s) ", end="")
                     match = ""
                     for line in lines:
                         ### save in case
@@ -77,39 +80,39 @@ class cleanOutput:
                         print(line, end=", ")
                     print("\n")
                     if 'E' in self.report:
-                        msgs = codeMessagesDict[code]
+                        msgs = self.codeMessagesDict[code]
                         for msg in msgs:
                             ### save in case
                             #print('\t',msg,'\t',match)
                             print('\t',msg)
 
-    def printrefactors(self, codeToNames, codeMessagesDict):
+    def printrefactors(self):
         print()
         print((' '*ticks)+"REFACTOR CHECKS"+(' '*ticks))
         for code in self.refactorByTypes:
             lines = self.refactorByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" self.refactors \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" self.refactors \n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
                 if 'R' in self.report:
-                    msgs = codeMessagesDict[code]
+                    msgs = self.codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
 
-    def printfatals(self, codeToNames, codeMessagesDict):
+    def printfatals(self):
         print()
         print((' '*ticks)+"FATAL CHECKS"+(' '*ticks))
         for code in self.fatalByTypes:
             lines = self.fatalByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+codeToNames[code]+ "\" fatal checks \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" fatal checks \n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
                 if 'F' in self.report:
-                    msgs = codeMessagesDict[code]
+                    msgs = self.codeMessagesDict[code]
                     for msg in msgs:
                         print('\t',msg)
 
@@ -188,8 +191,8 @@ class cleanOutput:
         self.buildCode_MessagePairs() # {code:message}
         self.buildCode_LineListPairs()
 
-        codeToNames = {} # {code : name}
-        codeMessagesDict = {} # {code : message}
+        self.codeToNames = {} # {code : name}
+        self.codeMessagesDict = {} # {code : message}
 
         for line in messages:
             warning = messages[line]
@@ -197,7 +200,7 @@ class cleanOutput:
             type = words[0]
             code = words[1][1:-1]
             name = words[2][:-1]
-            codeToNames[code] = name
+            self.codeToNames[code] = name
             warningMessage = " ".join(words[4:])
             if type == "convention":
                 self.conventionByTypes[code].append(line)
@@ -209,22 +212,22 @@ class cleanOutput:
                 self.refactorByTypes[code].append(line)
             elif type == "fatal":
                 self.fatalByTypes[code].append(line)
-            if code in codeMessagesDict:
-                codeMessagesDict[code].append("L" + line + ": " + warningMessage)
+            if code in self.codeMessagesDict:
+                self.codeMessagesDict[code].append("L" + line + ": " + warningMessage)
             else:
-                codeMessagesDict[code] = ["L" + line + ": "+ warningMessage]
+                self.codeMessagesDict[code] = ["L" + line + ": "+ warningMessage]
 
         # handling input from report:
         if ('c' in self.report) or ('C' in self.report):
-            self.printconventions(codeToNames, codeMessagesDict)
+            self.printconventions()
         if ('r' in self.report) or ('R' in self.report):
-            self.printrefactors(codeToNames, codeMessagesDict)
+            self.printrefactors()
         if ('w' in self.report) or ('W' in self.report):
-            self.printwarnings(codeToNames, codeMessagesDict)
+            self.printwarnings()
         if ('e' in self.report) or ('E' in self.report) or (self.errorByTypes["E0001"] != []):
-            self.printerrors(codeToNames, codeMessagesDict)
+            self.printerrors()
         if ('f' in self.report) or ('F' in self.report):
-            self.printfatals(codeToNames, codeMessagesDict)
+            self.printfatals()
 
 def main():
     options = '--enable=all '  # all messages will be shown
