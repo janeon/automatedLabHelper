@@ -2,8 +2,9 @@ C0102: Black listed name "%s"
 C0103: Invalid %s name "%s"
 C0111: Missing %s docstring
 C0112: Empty %s docstring
-C0113: Consider changing "%s" to "%s" 
+C0113: Consider changing "%s" to "%s"
 C0121: Missing required attribute "%s"
+C0123: Using type() instead of isinstance() for a typecheck.
 C0200: Consider using enumerate instead of iterating with range and len
 C0201: Consider iterating the dictionary directly instead of calling .keys()
 C0202: Class method %s should have cls as first argument
@@ -23,6 +24,8 @@ C0326: %s space %s %s %s\n%s
 C0327: Mixed line endings LF and CRLF
 C0328: Unexpected line ending format. There is ‘%s’ while it should be ‘%s’
 C0325: Unnecessary parens after %r keyword
+C0330: Wrong hanging indentation before block 
+C0411: %s comes before %s
 C1001: Old-style class defined
 C1801: Do not use len(SEQUENCE) as condition value
 E0001: (syntax error raised for a module; message varies)
