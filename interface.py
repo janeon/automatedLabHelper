@@ -1,4 +1,5 @@
-# tkinter tutorial https://www.geeksforgeeks.org/python-gui-tkinter/
+# tkinter tutorial
+# https://www.geeksforgeeks.org/python-gui-tkinter/
 
 from tkinter import filedialog
 from tkinter.filedialog import askopenfilename
