@@ -26,7 +26,7 @@ python3 helper.py
 `cleanOutput.py` post-processes pylint output into more readable, less redundant output. Users who desire to see their output straight from the command line rather than through the tkinter interface can run `cleanOutput.py` on the CLI with
 
 ```
-python3 cleanOutput.py [filename] [{c,r,w,e,f,C,R,W,E,F}`<sup>\*</sup>`]
+python3 cleanOutput.py [filename] [{c,r,w,e,f,C,R,W,E,F}<sup>\*</sup>]
 ```
 
 where the final parameter is a string containing some subset of the characters `CRWEFcwerf`. Lowercase 'c','r', 'w','e',and 'f' lists line numbers where convention/warning messages are found for each type of message (organized by message code), while their capitalized counterparts give the full list of messages outputted from pylint in addition to the lists of line numbers by message type. The meanings of each letter is as follows:
