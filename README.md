@@ -14,7 +14,9 @@ Our lab helper program can be run from the command line using `cleanOutput.py` (
 ```
 python3 launch.py
 ```
-which opens up a launcher window for the virtual environment (installs the latest versions of pip and pylint). Once inside the virutal environment named "virtual", call
+which opens up a launcher window for the virtual environment (installs the latest versions of pip and pylint). 
+
+Once inside the virutal environment named "virtual", call
 ```
 python3 helper.py
 ```
