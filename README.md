@@ -20,7 +20,7 @@ Once inside the virutal environment named "virtual", call
 ```
 python3 helper.py
 ```
-
+Feature notification: Recommendations can be accessed by double clicking on an (error) message
 
 ### cleanOutput.py
 `cleanOutput.py` post-processes pylint output into more readable, less redundant output. Users who desire to see their output straight from the command line rather than through the tkinter interface can run `cleanOutput.py` on the CLI with
