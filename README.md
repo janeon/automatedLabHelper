@@ -27,22 +27,22 @@ python3 helper.py
 python3 cleanOutput.py [filename] [{c,r,w,e,f,C,R,W,E,F}`<sup>\*</sup>`]
 ```
 
-where the final parameter is a string containing some subset of the characters `CRWEFcwerf`. Lowercase 'c','r', 'w','e',and 'f' lists line numbers where convention/warning messages are found for each type of message (organized by error code), while their capitalized counterparts give the full list of messages outputted from pylint in addition to the lists of line numbers by error type. The meanings of each letter is as follows:
+where the final parameter is a string containing some subset of the characters `CRWEFcwerf`. Lowercase 'c','r', 'w','e',and 'f' lists line numbers where convention/warning messages are found for each type of message (organized by message code), while their capitalized counterparts give the full list of messages outputted from pylint in addition to the lists of line numbers by message type. The meanings of each letter is as follows:
 
 * **C/c (Convention):**  denotes style-based warnings. They don't have anything to do with the correctness of the code, but simply check whether the code matches python code conventions/standards, and so they can for the most part be safely ignored by 150 students when debugging.
 * **R/r (Refactor):** denotes warnings for bad "code smell", which means code that is generally written in a way that isn't optimal (i.e. includes duplicated code, large and confusing classes, etc.).
 * **W/w (Warning):** refers to warnings related to python specifically. These will likely be useful for 150 stuents to look at.
 * **E/e (Error):** refers to actual bugs in the code. Errors are also generally important to look at.
-* **F/f (Fatal):** means that there is a problem with the output of pylint. ((check this))
+* **F/f (Fatal):** means that there is a problem with the output of pylint.
 
-These 5 error types are the same as those used by pylint (see https://docs.pylint.org/en/1.6.0/tutorial.html).
+These 5 message types are the same as those used by pylint (see https://docs.pylint.org/en/1.6.0/tutorial.html).
 
 ### regexChecks.py
 `regexChecks.py` contains a function called `check(line)`, which takes in a string and compares it to each of the defined regexes. `regexChecks.py` is called by `cleanOutput.py` to help catch syntax errors caused by mistakes such as forgetting colons and parentheses.
 
 ### ranking.py
 
-`ranking.py` takes in a list of folders and reads each python file in each of the folders. It then outputs a list of pylint errors and the number of times each error was found throughout all the files. Call `ranking.py` as follows:
+`ranking.py` takes in a list of folders and reads each python file in each of the folders. It then outputs a list of pylint messages and the number of times each message was found throughout all the files. Call `ranking.py` as follows:
 ```
 ranking.py [-h] [-a] [-p] folders [folders ...]
 ```
@@ -54,11 +54,11 @@ positional arguments:
 
 optional arguments:
   -h, --help      show this help message and exit
-  -a, --all       print all errors (including those with value 0)
+  -a, --all       print all messages (including those with value 0)
   -p, --progress  print the name of each file as it is processed
 ```
 
-By default, `ranking.py` will only output error codes with prevalences greater than 0.
+By default, `ranking.py` will only output message codes with prevalences greater than 0.
 
 ### checkers/return-not-caught-checker.py (located under checkers folder)
 

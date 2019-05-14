@@ -14,7 +14,7 @@ def getKey(item):
 def main():
     # parsing arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('-a', '--all', help='print all errors (including those with value 0)', action="store_true")
+    parser.add_argument('-a', '--all', help='print all messages (including those with value 0)', action="store_true")
     parser.add_argument ('-p', '--progress', help='print the name of each file as it is processed', action="store_true")
     parser.add_argument ('-o', '--outfile', help='print the name of each file as it is processed')
     parser.add_argument('folders', help='list the paths to folders you want to read from (including / after folder name)', nargs='+')
@@ -59,18 +59,18 @@ def main():
     for entry in codeDict:
         codeList.append((entry, codeDict[entry]))
     codeList = sorted(codeList, key=getKey, reverse=True)
-    print("Error prevalences: ")
+    #print("Messages prevalences: ")
     if args.all:
         for entry in codeList:
             if args.outfile:
-                f.write(entry[0]+": "+str(entry[1]))
+                f.write(entry[0]+": "+str(entry[1])+"\n")
             else:
                 print(entry[0]+": "+str(entry[1]))
     else:
         for entry in codeList:
             if entry[1] != 0:
                 if args.outfile:
-                    f.write(entry[0]+": "+str(entry[1]))
+                    f.write(entry[0]+": "+str(entry[1])+"\n")
                 else:
                     print(entry[0]+": "+str(entry[1]))
 

@@ -240,7 +240,6 @@ def main():
     #options += '--reports=y'  # also print the reports (ascii tables at the end)
     fname = sys.argv[1]
     report = list(sys.argv[2])
-
     out = cleanOutput(fname, report, options)
     out.clean()
     out.printClean()
