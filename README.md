@@ -82,7 +82,8 @@ but would not return an error if `test()` was replaced with `retVal = test()`. I
 ## Progress
 
 ### TODO:
-* Slight bug in how urls are called with the webbrowser module. Work for after finals
+* Slight bug in how urls are called with the webbrowser module (3 characters get appended to end of url once it enters the url bar) Work for after finals
+* Rating system (and input text field) for recommended and student-contributed sites
 
 ### DONE:
 * Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos/articles/documentation.
