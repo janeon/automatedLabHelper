@@ -15,6 +15,8 @@ def install():
     os.system("/bin/bash  --rcfile virtual/bin/activate 1> /dev/null")
     os.system("pip3 install pylint")
     os.system("pip3 install beautifulsoup4")
+    os.system("pip3 install bs4")
+    os.system("pip3 install requests")
 
 master = Tk()
 master.title('Lab Helper Launcher')
