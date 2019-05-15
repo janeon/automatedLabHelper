@@ -62,6 +62,10 @@ optional arguments:
 
 By default, `ranking.py` will only output message codes with prevalences greater than 0.
 
+### rankingAnalysis.py
+
+`rankingAnalysis.py` takes in output from `ranking.py` and can be used to plot various results. It isn't completely user-friendly since it was mostly used to examine results.
+
 ### checkers/return-not-caught-checker.py (located under checkers folder)
 
 `return-not-caught-checker.py` is a checker for pylint. It checks whether a function has a return value. If the function is called, it checks whether the return value from the function is saved. For example, it would produce a warning for the following code:
