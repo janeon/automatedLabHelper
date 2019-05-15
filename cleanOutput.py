@@ -33,7 +33,7 @@ class cleanOutput:
         for code in self.conventionByTypes:
             lines = self.conventionByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" convention reminders \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" convention reminders (Double click to find related examples) \n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
@@ -48,7 +48,7 @@ class cleanOutput:
         for code in self.warningByTypes:
             lines = self.warningByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" self.warnings \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" warnings (Double click to find related examples)\n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
@@ -61,7 +61,7 @@ class cleanOutput:
         print()
         print((' '*ticks)+"ERROR  CHECKS"+(' '*ticks))
         if self.errorByTypes["E0001"] != []:
-            print("Found 1", "\""+self.codeToNames["E0001"]+ "\" self.errors \n\t located on line ", end="")
+            print("Found 1", "\""+self.codeToNames["E0001"]+ "\" errors (Double click to find related examples) \n\t located on line ", end="")
             l = self.errorByTypes["E0001"]
             print(l[0])
             print('\t',"Note: While you have a syntax error, output from other code checks won't show up.\n")
@@ -72,7 +72,7 @@ class cleanOutput:
             for code in self.errorByTypes:
                 lines = self.errorByTypes[code]
                 if lines:
-                    print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" self.errors \n\t located on line(s) ", end="")
+                    print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" errors (Double click to find related examples) \n\t located on line(s) ", end="")
                     match = ""
                     for line in lines:
                         ### save in case
@@ -93,7 +93,7 @@ class cleanOutput:
         for code in self.refactorByTypes:
             lines = self.refactorByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" self.refactors \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" refactors (Double click to find related examples)\n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
@@ -108,7 +108,7 @@ class cleanOutput:
         for code in self.fatalByTypes:
             lines = self.fatalByTypes[code]
             if lines:
-                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" fatal checks \n\t located on line(s) ", end="")
+                print("Found", str(len(lines)), "\""+self.codeToNames[code]+ "\" fatal checks (Double click to find related examples)\n\t located on line(s) ", end="")
                 for line in lines:
                     print(line, end=", ")
                 print("\n")
