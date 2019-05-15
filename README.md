@@ -82,9 +82,10 @@ but would not return an error if `test()` was replaced with `retVal = test()`. I
 ## Progress
 
 ### TODO:
-* Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos/articles/documentation.
+* Slight bug in how urls are called with the webbrowser module. Work for after finals
 
 ### DONE:
+* Find sites that targets/is often visited or popular among beginning Python coders and scrape from each for example code or demos/articles/documentation.
 * Run our program on example files from 150 to determine utility of each error based on frequency of occurence in past student code
 * Basic interface for making installing and file browsing easier
 * Make it possible to run cleanoutput on interface
