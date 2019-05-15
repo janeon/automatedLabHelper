@@ -1,5 +1,5 @@
 ''' rankingAnalysis.py
-    accepts a file name,
+    mostly for quickly plotting our results for various parameters.
 '''
 
 import sys
@@ -10,8 +10,6 @@ import matplotlib.pyplot as plt
 def plot(data):
     objects = ('Convention', 'Refactor', 'Warning', 'Error', 'Fatal')
     y_pos = np.arange(len(objects))
-    performance = [10,8,6,4,2,1]
-
 
     plt.bar(y_pos, data, align='center', alpha=0.5)
     plt.xticks(y_pos, objects)
@@ -21,6 +19,38 @@ def plot(data):
     plt.show()
 
     # with help from: https://pythonspot.com/matplotlib-bar-chart/
+
+''' plot not including convention messages '''
+def plotWithoutC(data):
+    objects = ('Refactor', 'Warning', 'Error', 'Fatal')
+    y_pos = np.arange(len(objects))
+
+    plt.bar(y_pos, data, align='center', alpha=0.5)
+    plt.xticks(y_pos, objects)
+    plt.ylabel('Prevalence')
+    plt.title('Pylint Message Prevalence by Type')
+
+    plt.show()
+
+''' plots the 10 most common messages, with their prevalences
+    here, data should be in the form of a list of [warning, prevalence] pairs'''
+def mostCommon(data, type):
+    objects = []
+    prevalences = []
+    for index in range(5):
+        objects.append(data[index][0])
+        prevalences.append(data[index][1])
+
+    y_pos = np.arange(len(objects))
+
+    plt.bar(y_pos, prevalences, align='center', alpha=0.5)
+    plt.xticks(y_pos, objects)
+    plt.ylabel('Prevalence')
+    plt.title('Prevalences of the 5 Most Common '+type+' Messages')
+
+    plt.show()
+
+
 
 def total(data):
     sum = 0
@@ -38,7 +68,6 @@ def main():
     for line in rawData:
         line = line.strip("\n").split(": ")
         data.append([line[0],int(line[1])])
-    print(data)
 
     cData = []
     rData = []
@@ -59,7 +88,10 @@ def main():
             fData.append(line)
 
     plotData = [total(cData),total(rData),total(wData),total(eData),total(fData)]
-    plot(plotData)
+    plotDataWithoutC = [total(rData),total(wData),total(eData),total(fData)]
+    #plot(plotData)
+    #plotWithoutC(plotDataWithoutC)
+    #mostCommon(wData, "Warning")
 
 if __name__ == "__main__":
     main()
